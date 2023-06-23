@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+import Hero from './sections/Hero'
+import {front} from '../src/utils/frontMovies'
 
 function App() {
+  const [frontMovies, setFrontMovies]= useState([])
+
+  useEffect(()=>{
+    setFrontMovies(front)
+  }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="relative h-[200vh] ">
+      <Navbar/>
+      <Hero frontMovies={frontMovies} />
     </div>
   );
 }

@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+   
+}
+a{
+    margin: 0;
+    padding: 0;
+}
+button{
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+    background-color: #0f1013;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (max-width: 768px){
+    .center-mobile{
+        align-items: center;
+    }
+}
+
+.fade-in{
+    animation: fade-in 1000ms linear
+}
+
+@keyframes fade-in{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, transparent, black);
+    z-index:99;
   }
+
+@media screen and (min-width:1024px) {
+    .calc{
+        width: calc(100% - 170px);
+      }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.calc-child-slider{
+    width: calc(580px / 6 - 8px )
 }
 
-.App-link {
-  color: #61dafb;
+.rotatey{
+    transform: rotateY(180deg);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.slider{
+    --slider-index:0;
+    --pics:4;
+
+    width: calc(100% - 60px);
+    transform: translateX(calc(var(--slider-index) * -100%));
+    transition: transform 500ms linear ;
 }

@@ -27,7 +27,7 @@ function MainSlider({ trending }) {
       if(index >= 4) return
       let size = sliderRef.current.offsetWidth;
       let newIndex = index + 1;
-      sliderRef.current.style.transition = 'transform 0.3s linear';
+      sliderRef.current.style.transition = 'transform 0.2s linear';
       setIndex(newIndex);
       sliderRef.current.style.transform = 'translateX(' + (-size * newIndex) + 'px)';
   }
@@ -36,7 +36,7 @@ function MainSlider({ trending }) {
       if(index <= 0) return
       let size = sliderRef.current.offsetWidth;
       let newIndex = index - 1;
-      sliderRef.current.style.transition = 'transform 0.3s linear';
+      sliderRef.current.style.transition = 'transform 0.2s linear';
       setIndex(newIndex);
       sliderRef.current.style.transform = 'translateX(' + (-size * newIndex) + 'px)';
   }
@@ -73,48 +73,49 @@ function MainSlider({ trending }) {
         <div onTransitionEnd={handleTransitionEnd}  ref={sliderRef} className='flex w-full gap-2 lg:w-[95%] translate-x-0 lg:translate-x-[-100%] overflow-x-scroll lg:overflow-visible' >
             {last.map(movie => {
                 return (
-                    <div className=' h-[170px] cursor-pointer lg:h-[250px] lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px]' >
+                    <div className=' h-[170px] cursor-pointer lg:h-[250px] lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
                         <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={`group-hover:h-[45%] object-bottom  rounded-[5px] h-full w-full`}/>
                     </div>
                 )
             })}
             {trending.map((movie, index) => {
                 return (
-                    <div onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={handleMouseLeave} className={`group   lg:hover:scale-x-[1.8] lg:hover:scale-y-[1.5] bg-[#16181f] text-white cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] ${index%7 === 0 ? "origin-left" : ''}`} >
+                    <div onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={handleMouseLeave} className={`group   lg:hover:scale-x-[1.9] lg:hover:scale-y-[1.6] bg-[#16181f] text-white cursor-pointer  lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] ${index%7 === 0 ? "origin-left" : ''}`} >
                            <div 
-                                className={`absolute inset-0 w-full lg:h-[45%] ${hoveredMovieId === movie.id ?'lg:flex':'hidden'}`} 
+                                className={`absolute inset-0 w-full lg:h-[40%] ${hoveredMovieId === movie.id ?'lg:flex':'hidden'}`} 
                                 style={{ backgroundImage: 'linear-gradient(to bottom, transparent, #16181f)', zIndex: 99 }}
                             />
 
-                        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={` group-hover:h-[45%] object-bottom lg:group-hover:object-top lg:group-hover:object-cover  rounded-[5px] h-full w-full`}/>
-                        <div className='flex-col items-center hidden w-full gap-2 mt-3 lg:group-hover:flex' >
+                        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={` group-hover:h-[40%] object-bottom lg:group-hover:object-top lg:group-hover:object-cover  rounded-[5px] h-full w-full`}/>
+                        <div className='flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full px-2 py-2 mt-1 lg:group-hover:flex' >
                             <div className='flex gap-2 w-[95%]' >
-                                <button className='text-[8px] h-[30px] w-[135px] flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px]' >
+                                <button className='lg:hover:scale-[1.02] transition-all duration-300 text-[8px] h-[30px] w-[135px] flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px]' >
                                     <img src="./images/dark-blue-play.png" alt="" className='w-2 h-2'/>
                                     <span className='font-medium text-[#16181f]' >Watch Now</span>
                                 </button>
-                                <button className='text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white' >+</button>
+                                <button className='lg:hover:scale-[1.02] transition-all duration-300 text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white' >+</button>
                             </div>
+                            <p className='font-semibold text-[10px] text-[#d9d9da]' >{movie.name}</p>
                             
                             <div className='w-[95%] flex flex-col  gap-1' >
-                                <div className='flex gap-1  items-center text-[9px] font-medium ' >
-                                    <span className='text-[#d9d9da text-[9px]' >{typeof(movie.first_air_date)==='string' && movie.first_air_date.slice(0, 4)}</span>
-                                    <span className='text-[#a2a3a5] text-[9px]' >•</span>
+                                <div className='flex gap-1  items-center text-[8px] font-medium  ' >
+                                    <span className='text-[#d9d9da text-[8px]' >{typeof(movie.first_air_date)==='string' && movie.first_air_date.slice(0, 4)}</span>
+                                    <span className='text-[#a2a3a5] text-[8px]' >•</span>
                                     {movie.genre_ids.slice(0, 2).map(genre_id => {
                                         return (
-                                            <div className='flex gap-1 text-[9px]'>
+                                            <div className='flex gap-1 text-[8px]'>
                                                 <span>{tv_genres[genre_id]}</span>
                                                 <span className='text-[#a2a3a5]' >•</span>
                                             </div>
                                         )
                                     })}
-                                    <div className='flex justify-center items-center text-[#d9d9da] gap-1' >
-                                        <img src="./images/star.png" alt="" className='w-2 h-2'/>
-                                        <span>{movie.vote_average}</span>
+                                    <div className='flex  items-center text-[#d9d9da] gap-1' >
+                                        <img src="./images/star.png" alt="" className='w-2 h-2 '/>
+                                        <span className='text-[8px]' >{movie.vote_average.toString().slice(0,3)}</span>
                                     </div>
                                 
                                 </div>
-                                <p className='text-[#7c849b] text-[7px] flex-grow-0 flex-shrink-0 w-full' >{movie.overview.split(' ').slice(0,28).join(' ')}</p>
+                                <p className='text-[#7c849b] text-[7px] flex-grow-0 flex-shrink-0 w-full' >{movie.overview.split(' ').slice(0,22).join(' ')}</p>
                             </div>
 
                         
@@ -124,7 +125,7 @@ function MainSlider({ trending }) {
             })}
             {first.map(movie => {
                 return (
-                    <div className=' h-[170px] lg:h-[250px] cursor-pointer lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px]' >
+                    <div className=' h-[170px] lg:h-[250px] cursor-pointer lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
                         <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={`group-hover:h-[45%] object-bottom  rounded-[5px] h-full w-full`}/>
                     </div>
                 )

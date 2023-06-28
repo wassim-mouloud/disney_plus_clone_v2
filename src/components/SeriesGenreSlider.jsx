@@ -22,7 +22,7 @@ function GenreSlider({title, url1, url2}) {
                 setTrending(json.results)
                 const response2= await fetch(url2, options)
                 const json2= await response2.json()
-                setTrending(prev=>[...prev, json2.results[0]])
+                setTrending(prev=>[...prev, json2.results[8]])
                 setTrending(prev=>[...prev].slice(0,21))
             }catch(e){
                 console.error(e)

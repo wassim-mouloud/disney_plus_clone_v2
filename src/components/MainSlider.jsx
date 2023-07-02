@@ -92,7 +92,7 @@ function MainSlider({ trending }) {
             {last.map(movie => {
                 return (
                     <div className=' h-[170px] cursor-pointer lg:h-[250px] lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
-                        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={`group-hover:h-[45%] object-bottom  rounded-[5px] h-full w-full`}/>
+                        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={`group-hover:h-[45%]  rounded-[5px] h-full w-full`}/>
                     </div>
                 )
             })}
@@ -100,11 +100,11 @@ function MainSlider({ trending }) {
                 return (
                     <div onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={handleMouseLeave} className={`group   lg:hover:scale-x-[1.9] lg:hover:scale-y-[1.6] bg-[#16181f] text-white cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] ${index%7 === 0 ? "origin-left" : ''}`} >
                            <div 
-                                className={`absolute inset-0 w-full lg:h-[40%] ${hoveredMovieId === movie.id ?'lg:flex':'hidden'}`} 
+                                className={`absolute inset-0 w-full h-0 lg:h-[40%] ${hoveredMovieId === movie.id ?'lg:flex':'hidden'}`} 
                                 style={{ backgroundImage: 'linear-gradient(to bottom, transparent, #16181f)', zIndex: 99 }}
                             />
 
-                        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={` group-hover:h-[40%] object-bottom lg:group-hover:object-top lg:group-hover:object-cover  rounded-[5px] h-full w-full`}/>
+                        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={` lg:group-hover:h-[40%]  lg:group-hover:object-top lg:group-hover:object-cover  rounded-[5px] h-full w-full`}/>
                         <div className='flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 lg:group-hover:flex' >
                             <div className='flex gap-2 w-[95%]' >
                                 <button className='text-[8px] h-[30px] w-[135px] flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px]' >
@@ -144,7 +144,7 @@ function MainSlider({ trending }) {
             {first.map(movie => {
                 return (
                     <div className=' h-[170px] lg:h-[250px] cursor-pointer lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
-                        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={`group-hover:h-[45%] object-bottom  rounded-[5px] h-full w-full`}/>
+                        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={`group-hover:h-[45%]  rounded-[5px] h-full w-full`}/>
                     </div>
                 )
             })}

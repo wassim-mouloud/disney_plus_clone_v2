@@ -1,28 +1,24 @@
-import { useEffect, useState } from 'react';
+import {Route, Routes} from 'react-router-dom';
 import './App.css';
+import Home from './sections/Home';
 import Navbar from './components/Navbar';
-import Hero from './sections/Hero'
-import {front} from '../src/utils/frontMovies'
-import GenreSlider from './components/GenreSlider';
-import SeriesGenreSlider from './components/SeriesGenreSlider'
+import Movies from './sections/Movies'
+import Series from './sections/Series';
+import Search from './sections/Search';
 function App() {
-  const [frontMovies, setFrontMovies]= useState([])
 
-  useEffect(()=>{
-    setFrontMovies(front)
-  }, [])
 
 
   return (
-    <div className="relative h-[250vh] ">
-      <Navbar/>
-      <Hero frontMovies={frontMovies} />
-      <GenreSlider title='Popular Movies' url1='https://api.themoviedb.org/3/movie/popular?language=en-US&page=1' url2='https://api.themoviedb.org/3/movie/popular?language=en-US&page=2' />
-      <SeriesGenreSlider title='Popular Series' url1='https://api.themoviedb.org/3/trending/tv/day?language=en-US' url2='https://api.themoviedb.org/3/trending/tv/day?language=en-US'/>
-      <GenreSlider title='Top rated Movies' url1='https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1' url2='https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=2'/>
-      <SeriesGenreSlider title='Top Rated Series' url1='https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1' url2='https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=2' />
+    <div className="relative">
+      {/* <Routes>
+        <Route path='/' element={<Home/>} ></Route>
+        <Route path='/Movies' element={<Movies/>} ></Route>
+        <Route path='/Series' element={<Series/>} ></Route>
 
 
+      </Routes> */}
+      <Search/>
     </div>
   );
 }

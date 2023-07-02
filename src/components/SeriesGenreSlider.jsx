@@ -3,7 +3,7 @@ import MainSlider from './MainSlider';
 import SeriesSlider from './SeriesSlider'
 
 
-function GenreSlider({title, url1, url2}) {
+function SeriesGenreSlider({title, url1, url2}) {
     const [trending, setTrending]= useState([])
 
     const options = {
@@ -39,4 +39,4 @@ function GenreSlider({title, url1, url2}) {
   )
 }
 
-export default GenreSlider
+export default SeriesGenreSlider

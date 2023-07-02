@@ -75,3 +75,10 @@ body{
     transform: translateX(calc(var(--slider-index) * -100%));
     /* transition: transform 500ms linear ; */
 }
+
+.my-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+  }

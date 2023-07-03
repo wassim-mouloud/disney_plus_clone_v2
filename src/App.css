@@ -82,3 +82,17 @@ body{
     grid-auto-rows: auto;
     grid-gap: 10px;
   }
+
+
+.pulse{
+    animation : pulse 900ms infinite
+}
+
+@keyframes pulse{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

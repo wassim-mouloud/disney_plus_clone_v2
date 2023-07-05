@@ -83,15 +83,15 @@ function Search() {
                             <div
                                 key={index}
                                 layout
-                                className={`group h-[190px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer ${hovered?'lg:hover:scale-x-[1.9] lg:hover:scale-y-[1.3] lg:hover:z-[99]':''} transition-transform duration-300`}
+                                className={`group h-[190px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-300 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.9] lg:hover:scale-y-[1.3] lg:hover:z-[99]':''} ${index%6===0?'origin-left':''} `}
                                 onMouseEnter={()=>handleMouseEnter(movie.id)}
                                 onMouseLeave={handleMouseLeave}>
                                 <img
                                     src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                                     alt=""
-                                    className={` rounded-t-[5px] h-full w-full ${hovered?'lg:group-hover:h-[40%]  lg:group-hover:object-cover lg:group-hover:object-top':''} `}
+                                    className={` rounded-t-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%]  lg:group-hover:object-cover lg:group-hover:object-top':''} `}
                                 />
-                                <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered?'lg:group-hover:flex':''}`} >
+                                <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
                                     <div className='flex gap-2 w-[95%]' >
                                         <button className='text-[8px] h-[30px] w-[135px] flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px]' >
                                             <img src="./images/dark-blue-play.png" alt="" className='w-2 h-2'/>

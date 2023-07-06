@@ -68,7 +68,7 @@ function Search() {
     
 
     return (
-        <div>
+        <div className='relative'>
             <Navbar/>
             <div className='w-screen' >
                 <div className='w-[90%] lg:w-[80%] flex items-center gap-2 bg-[#262833] mt-5 mx-auto rounded-[7px] p-4' >
@@ -99,7 +99,7 @@ function Search() {
                                         </button>
                                         <button className='text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white' >+</button>
                                     </div>
-                                    <p className='font-bold text-[10px] text-[#d9d9da]' >{index<5 || inputRef.current.value==='' ?movie.original_title:movie.original_name}</p>
+                                    <p className='font-bold text-[10px] text-[#d9d9da] py-1' >{index<5 || inputRef.current.value==='' ?movie.original_title:movie.original_name}</p>
                                     <div className='w-[95%] flex flex-col gap-1' >
                                         <div className='flex gap-1  items-center text-[8px] font-medium ' >
                                         <span className='text-[#d9d9da] text-[8px]' >

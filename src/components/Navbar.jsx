@@ -6,16 +6,15 @@ function Navbar() {
     const [active, setActive] = useState("Home")
 
     return (
-        <div className='fixed top-[calc(100vh-100px)] lg:top-0 lg:left-0 z-[99] bg-[#0f1013] lg:bg-transparent' style={{ backgroundImage: `linear-gradient(to right, #0f1013 , transparent)` }}>
+        <div className='group w-screen lg:hover:w-[20vw] lg:w-[80px] h-[100px] lg:h-screen fixed bottom-0 lg:top-0 lg:left-0 z-[99] bg-[#0f1013] lg:bg-transparent transition-[width] duration-500' style={{ backgroundImage: `linear-gradient(to right, #0f1013 , transparent)` }}>
             <div className='w-full h-[0.5px] lg:hidden bg-[#94a3b8]' />
             <div 
-                className="p-4 group w-screen lg:w-[80px] h-[100px] lg:h-screen text-white  flex lg:flex-col justify-center center-mobile lg:gap-6 gap-14 transition-[width] duration-500 lg:hover:bg-gradient-to-r from-#0f1013 to-gray-400 lg:hover:w-[20vw]"
+                className="flex items-center justify-center w-full h-full p-4 text-white lg:flex-col lg:items-start lg:gap-6 "
                 >
 
                 <div  
-                    className={`cursor-pointer lg:hover:scale-[1.15] transition-transform duration-300 lg:ml-[30px] h-[50px] flex flex-col gap-3 lg:flex-row items-center`}
-                    onClick={() => setActive("My space")}
-                >
+                    className={`cursor-pointer lg:hover:scale-[1.15] transition-transform duration-300 lg:ml-[30px] h-[50px] flex flex-col gap-3 lg:flex-row items-center ml-[50px]`}
+                    onClick={() => setActive("My space")}>
                     <img 
                         src={`./images/daredevil.jpeg`} 
                         alt="" 
@@ -29,7 +28,7 @@ function Navbar() {
                 </div>
 
                 {['Home', 'Search', "Movies", "Series"].map((item, i) => (
-                    <Link key={i} to={`${item!=='Home'?`/${item}`:'/'}`}>
+                    <Link key={i} to={`${item!=='Home'?`/${item}`:'/'}`} className='ml-[50px] lg:ml-0 last:ml-0'> 
                         <div
                             key={item}
                             className={`${active === item ? 'text-white' : 'text-[#C3C3C3]'} hover:text-white lg:hover:scale-[1.15] transition-transform duration-300 ${item==="Movies" || item==="Series"?"hidden  lg:flex" :'' } lg:ml-[30px] cursor-pointer h-[50px] flex flex-col gap-3 lg:flex-row items-center flex-shrink-0`}

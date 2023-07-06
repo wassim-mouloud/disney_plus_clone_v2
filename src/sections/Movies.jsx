@@ -11,7 +11,7 @@ function Movies() {
 
   
   return (
-    <div className='z-[90]' >
+    <div className='z-[90] relative' >
       <Navbar/>
       <Hero frontMovies={front} />
       <GenreSlider title='Popular Movies' url1='https://api.themoviedb.org/3/movie/popular?language=en-US&page=1' url2='https://api.themoviedb.org/3/movie/popular?language=en-US&page=2' />

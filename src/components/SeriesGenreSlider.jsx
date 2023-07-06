@@ -3,7 +3,7 @@ import MainSlider from './MainSlider';
 import SeriesSlider from './SeriesSlider'
 
 
-function SeriesGenreSlider({title, url1, url2}) {
+function SeriesGenreSlider({title, url1, url2, mb}) {
     const [trending, setTrending]= useState([])
 
     const options = {
@@ -32,7 +32,7 @@ function SeriesGenreSlider({title, url1, url2}) {
         getTrending()
       },[])
   return (
-    <div className=' flex flex-col gap-1 ml-3 lg:ml-[100px] mt-10  lg:w-[calc(100vw-100px)] ' >
+    <div className={`flex flex-col gap-1 ml-3 lg:ml-[100px] mt-10  lg:w-[calc(100vw-100px)] mb-[${mb}] lg:mb-0`} >
         <p className=' text-white font-semibold text-[20px]' >{title}</p>
         <SeriesSlider trending={trending} />
     </div>

@@ -12,7 +12,7 @@ function Series() {
 
 
   return (
-    <div>
+    <div className='relative'>
         <Navbar/>
         <SeriesHero frontSeries={frontSeries} />
         <SeriesGenreSlider title='Popular Series' url1='https://api.themoviedb.org/3/trending/tv/day?language=en-US' url2='https://api.themoviedb.org/3/trending/tv/day?language=en-US'/>

@@ -264,7 +264,7 @@ function Hero({ frontMovies }) {
                                     autoPlay
                                     muted 
                                     loop 
-                                    className='rounded-[5px] object-cover w-full  h-full min-w-full min-h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100'
+                                    className='hidden lg:block rounded-[5px] object-cover w-full  h-full min-w-full min-h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100'
                                     />
 
                                 </div>

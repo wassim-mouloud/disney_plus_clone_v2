@@ -6,7 +6,7 @@ function Navbar() {
     const [active, setActive] = useState("Home")
 
     return (
-        <div className='group w-screen lg:hover:w-[20vw] lg:w-[80px] h-[100px] lg:h-screen fixed bottom-0 lg:top-0 lg:left-0 z-[99] bg-[#0f1013] lg:bg-transparent transition-[width] duration-500' style={{ backgroundImage: `linear-gradient(to right, #0f1013 , transparent)` }}>
+        <div className=' group w-screen lg:hover:w-[20vw] lg:w-[80px] h-[100px] lg:h-screen fixed bottom-0 lg:top-0 lg:left-0 z-[99] bg-[#0f1013] lg:bg-transparent transition-[width] duration-500' style={{ backgroundImage: `linear-gradient(to right, #0f1013 , transparent)` }}>
             <div className='w-full h-[0.5px] lg:hidden bg-[#94a3b8]' />
             <div 
                 className="flex items-center justify-center w-full h-full p-4 text-white lg:flex-col lg:items-start lg:gap-6 "

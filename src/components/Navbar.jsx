@@ -28,8 +28,8 @@ function Navbar() {
                     </span>
                 </div>
 
-                {['Home', 'Search', "Movies", "Series"].map((item) => (
-                    <a href={`${item!=='Home'?`/${item}`:'/'}`}>
+                {['Home', 'Search', "Movies", "Series"].map((item, i) => (
+                    <a key={i} href={`${item!=='Home'?`/${item}`:'/'}`}>
                         <div
                             key={item}
                             className={`${active === item ? 'text-white' : 'text-[#C3C3C3]'} hover:text-white lg:hover:scale-[1.15] transition-transform duration-300 ${item==="Movies" || item==="Series"?"hidden  lg:flex" :'' } lg:ml-[30px] cursor-pointer h-[50px] flex flex-col gap-3 lg:flex-row items-center flex-shrink-0`}

@@ -26,17 +26,7 @@ function Hero({ frontMovies }) {
         return () => clearInterval(timer);
     }, [frontMovies]);
 
-    // useEffect(() => {
-    //     if(sliderRef.current) {
-    //         if(index % 5 === 4) { // for every fourth element
-    //             scrollDots.current.scrollLeft += 66
-    //         } else if (index === 18) {
-    //             setTimeout(() => { 
-    //                 scrollDots.current.scrollLeft = 0 
-    //             }, 6000);
-    //         }
-    //     }
-    // }, [index]);
+
     
     
 
@@ -92,19 +82,31 @@ function Hero({ frontMovies }) {
             }
           };
           
-          frontMovies.forEach(movie=>{
-            fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`, options)
-                .then(response => response.json())
-                .then(response => {
-                    for (let video of response.results){
-                        if(video.type==="Trailer" ){
-                            setTrailers(prevTrailers => [...prevTrailers, video.key]);
-                            break
+          const fetchMovieTrailers = async () => {
+            for (let movie of frontMovies) {
+              try {
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`, options);
+                const data = await response.json();
+                for (let video of data.results) {
+                  if (video.type === "Trailer") {
+                    setTrailers(prevTrailers => {
+                        if (!prevTrailers.includes(video.key)) {
+                          return [...prevTrailers, video.key];
+                        } else {
+                          return prevTrailers;
                         }
-                    }
-          })
-          .catch(err => console.error(err));
-          })
+                      });
+                                          break;
+                  }
+                }
+              } catch (err) {
+                console.error(err);
+              }
+            }
+          };
+          
+          fetchMovieTrailers();
+          
       
     }, [frontMovies])
         
@@ -148,7 +150,7 @@ function Hero({ frontMovies }) {
                                 <span className='lg:hidden'>•</span>
                                 {frontMovies[index].genres.map((genre, i) => {
                                     return (
-                                        <div className={`${i > 3 ? "hidden" : ''} flex gap-2  z-[90]`}>
+                                        <div key={i} className={`${i > 3 ? "hidden" : ''} flex gap-2  z-[90]`}>
                                             <span>{genre.name}</span>
                                             {i !== frontMovies[index].genres.length - 1?<div><span className='lg:hidden' >•</span> <span className='hidden lg:flex' >|</span></div>:null }
                                         </div>
@@ -179,6 +181,7 @@ function Hero({ frontMovies }) {
                                 {dupLast.map(n=>{
                                      return (
                                         <div 
+                                            key={n}
                                             onClick={()=>setIndex(n)} 
                                             className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
@@ -189,6 +192,7 @@ function Hero({ frontMovies }) {
                                 {slider.map(n=>{
                                     return (
                                         <div 
+                                            key={n}
                                             onClick={()=>setIndex(n)} 
                                             className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
@@ -199,6 +203,7 @@ function Hero({ frontMovies }) {
                                 {dupFirst.map(n=>{
                                      return (
                                         <div 
+                                            key={n}
                                             onClick={()=>setIndex(n)} 
                                             className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 

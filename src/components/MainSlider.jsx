@@ -164,7 +164,7 @@ useEffect(()=>{
                             
                             <div className='w-[95%] flex flex-col gap-1' >
                                 <div className='flex gap-1  items-center text-[8px] font-medium ' >
-                                    <span className='text-[#d9d9da text-[8px]' >{typeof(movie.release_date)==='string' && movie.release_date.slice(0, 4)}</span>
+                                    <span className='text-[#d9d9da] text-[8px]' >{typeof(movie.release_date)==='string' && movie.release_date.slice(0, 4)}</span>
                                     <span className='text-[#a2a3a5] text-[9px]' >•</span>
                                     {movie.genre_ids.slice(0, 2).map((genre_id, index) => {
                                         return (

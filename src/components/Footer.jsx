@@ -2,8 +2,8 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className='w-screen h-[200px] hidden lg:flex justify-center items-center mt-[50px] ' >
-      <div className=' w-[90%] flex justify-between' >
+    <div className='w-screen ml-[100px] h-[200px] hidden lg:flex items-center mt-[50px] ' >
+      <div className=' w-[calc(100%-100px)] flex justify-between pr-8' >
         <div className='flex flex-col gap-4 ' >
           <p className='text-[#e1e6f0]' >Company</p>
           <div className='flex flex-col gap-1 text-[#8f98b2] text-[14px]' >

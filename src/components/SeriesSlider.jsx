@@ -122,7 +122,7 @@ useEffect(()=>{
             })}
             {trending.map((movie, index) => {
                 return (
-                    <div key={index} onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={handleMouseLeave} className={`group ${isHovered && movie.id===hoveredMovieId ? 'lg:hover:scale-x-[2] lg:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] ${index%7 === 0 ? "origin-left" : ''} ${index%6 === 0 && index!==0 ? "origin-right" : ''}`} >
+                    <div key={index} onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={handleMouseLeave} className={`group ${isHovered && movie.id===hoveredMovieId ? 'lg:hover:scale-x-[2] lg:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] w-[110px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] ${index%7 === 0 ? "origin-left" : ''} ${index%6 === 0 && index!==0 ? "origin-right" : ''}`} >
                            {/* <div 
                                 className={`absolute inset-0 w-full lg:h-[40%] ${hoveredMovieId === movie.id ?'lg:flex':'hidden'}`} 
                                 style={{ backgroundImage: 'linear-gradient(to bottom, transparent, #16181f)', zIndex: 99 }}
@@ -169,7 +169,7 @@ useEffect(()=>{
             })}
             {first.map((movie, index) => {
                 return (
-                    <div key={index} className=' h-[170px] lg:h-[250px] cursor-pointer lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
+                    <div key={index} className=' h-[170px] lg:h-[250px] cursor-pointer lg:min-h-[250px]  lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
                         <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={`group-hover:h-[45%]  rounded-[5px] h-full w-full`}/>
                     </div>
                 )

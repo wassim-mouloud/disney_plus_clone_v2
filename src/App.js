@@ -1,7 +1,6 @@
 import {Route, Routes} from 'react-router-dom';
 import './App.css';
 import Home from './sections/Home';
-import Navbar from './components/Navbar';
 import Movies from './sections/Movies'
 import Series from './sections/Series';
 import Search from './sections/Search';

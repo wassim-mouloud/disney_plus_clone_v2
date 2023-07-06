@@ -32,8 +32,8 @@ function SeriesGenreSlider({title, url1, url2}) {
         getTrending()
       },[])
   return (
-    <div className=' flex flex-col gap-1 lg:ml-[100px] mt-10  lg:w-[calc(100vw-100px)] ' >
-        <p className='ml-3 lg:ml-0 text-white font-semibold text-[20px]' >{title}</p>
+    <div className=' flex flex-col gap-1 ml-3 lg:ml-[100px] mt-10  lg:w-[calc(100vw-100px)] ' >
+        <p className=' text-white font-semibold text-[20px]' >{title}</p>
         <SeriesSlider trending={trending} />
     </div>
   )

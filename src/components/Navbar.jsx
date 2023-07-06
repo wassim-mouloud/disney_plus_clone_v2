@@ -16,7 +16,7 @@ function Navbar() {
                     className={`cursor-pointer lg:hover:scale-[1.15] transition-transform duration-300 lg:ml-[30px] h-[50px] flex flex-col gap-3 lg:flex-row items-center ml-[50px]`}
                     onClick={() => setActive("My space")}>
                     <img 
-                        src={`./images/daredevil.jpeg`} 
+                        src={`/images/daredevil.jpeg`} 
                         alt="" 
                         className={`h-[20px] w-[20px] min-w-[20px] object-cover rounded-full`} 
                     />
@@ -35,7 +35,7 @@ function Navbar() {
                             onClick={() => setActive(item)}
                         >
                             <img
-                                src={`./images/${active === item ? "white_" + item.toLowerCase() + ".png" : "gray_" + item.toLowerCase() + ".png"}`}
+                                src={`/images/${active === item ? "white_" + item.toLowerCase() + ".png" : "gray_" + item.toLowerCase() + ".png"}`}
                                 alt=""
                                 className={`h-[20px] min-w-[20px] w-[20px] flex-shrink-0 object-cover`}
                             />

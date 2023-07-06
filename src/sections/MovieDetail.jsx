@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { front } from '../utils/frontMovies'
 import GenreSlider from '../components/GenreSlider'
 import Navbar from '../components/Navbar'
 import {useParams} from 'react-router-dom'
@@ -21,16 +20,17 @@ function MovieDetail() {
             .then(response => response.json())
             .then(response => setMovie(response))
             .catch(err => console.error(err));
-    },[])
+    },[id])
+
 
 
   return (
     <div>
         <Navbar/>
-        <div className='w-screen relative text-[#d9d9da]' >
-            <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="" className='h-[40%] lg:h-[70vh] object-cover lg:object-top w-full rounded-lg' />
+        <div className='w-screen relative h-[110vh] lg:h-[120vh] text-[#d9d9da]' >
+            <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="" className='h-[30vh] lg:h-[70vh] object-cover lg:object-top w-full rounded-lg' />
             <div 
-                    className="absolute inset-0 w-screen h-[40%] lg:h-[70vh] hidden lg:block" 
+                    className="absolute inset-0 w-screen  lg:h-[70vh] hidden lg:block" 
                     style={{ backgroundImage: 'linear-gradient(to bottom, transparent, #0f1013)' }}
             >
             </div>
@@ -59,7 +59,7 @@ function MovieDetail() {
                     })}
                 </div>
         </div>
-        <GenreSlider  title='More like this' url1='https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_companies=420' url2='https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc&with_companies=420'/>
+        <GenreSlider  title='Movies you might like' url1='https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_companies=420' url2='https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc&with_companies=420'/>
 
     </div>
     </div>

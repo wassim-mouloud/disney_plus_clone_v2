@@ -5,6 +5,7 @@ import Movies from './sections/Movies'
 import Series from './sections/Series';
 import Search from './sections/Search';
 import MovieDetail from './sections/MovieDetail';
+import SeriesDetail from './sections/SeriesDetail';
 function App() {
 
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/Series' element={<Series/>} ></Route>
         <Route path='/Search' element={<Search/>}></Route>
         <Route path='MovieDetail/:id' element={<MovieDetail/>}></Route>
+        <Route path='SeriesDetail/:id' element={<SeriesDetail/>}></Route>
       </Routes>
     </div>
   );

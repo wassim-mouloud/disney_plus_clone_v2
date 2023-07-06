@@ -131,7 +131,7 @@ useEffect(()=>{
   return (
     <div className='z-[90] py-2 relative w-screen  mt-3  lg:w-[calc(100vw-100px)] overflow-x-clip'>
         <div onClick={handlePrev} className=' cursor-pointer h-full w-[50px] hidden lg:flex opacity-0 hover:opacity-100 transition-opacity duration-500 justify-center items-center absolute left-0 top-0 z-[99]' style={{ backgroundImage: 'linear-gradient(to left, transparent, #0f1013)' }} >
-            <img src="./images/previousMain.png" alt="" className='w-4 h-4 z-[99]'  />
+            <img src="/images/previousMain.png" alt="" className='w-4 h-4 z-[99]'  />
         </div>
         <div onTransitionEnd={handleTransitionEnd}  ref={sliderRef} className='flex w-full gap-2 lg:w-[95%] translate-x-0 lg:translate-x-[-100%] overflow-x-scroll lg:overflow-visible' >
             {last.map((movie, index) => {
@@ -151,7 +151,7 @@ useEffect(()=>{
                                     <div className='flex gap-2 w-[95%]' >
                                         <a className='h-[30px] w-[135px]' href={`https://www.youtube.com/watch?v=${trailers[index]}`} target="_blank" rel="noopener noreferrer">
                                             <button className='lg:hover:scale-[1.02] transition-all duration-300 text-[8px] h-full w-full flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px]' >
-                                                <img src="./images/dark-blue-play.png" alt="" className='w-2 h-2'/>
+                                                <img src="/images/dark-blue-play.png" alt="" className='w-2 h-2'/>
                                                 <span className='font-medium text-[#16181f]' >Watch Now</span>
                                             </button>
                                         </a>
@@ -194,7 +194,7 @@ useEffect(()=>{
             })}
         </div>
         <div onClick={handleNext} className='cursor-pointer h-full w-[50px] hidden lg:flex opacity-0 hover:opacity-100 transition-opacity duration-500 justify-center items-center absolute right-0 top-0' style={{ backgroundImage: 'linear-gradient(to right, transparent, #0f1013)' }}>
-            <img src="./images/nextMain.png" alt="" className='w-4 h-4 z-[99]'  />
+            <img src="/images/nextMain.png" alt="" className='w-4 h-4 z-[99]'  />
         </div>
     </div>
   )

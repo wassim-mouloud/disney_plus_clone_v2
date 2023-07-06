@@ -16,9 +16,7 @@ function App() {
         <Route path='/Movies' element={<Movies/>} ></Route>
         <Route path='/Series' element={<Series/>} ></Route>
         <Route path='/Search' element={<Search/>}></Route>
-
       </Routes>
-
     </div>
   );
 }

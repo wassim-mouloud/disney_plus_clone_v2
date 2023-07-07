@@ -1,6 +1,71 @@
 export const frontSeries=
     [
       {
+        "backdrop_path": "/1R68vl3d5s86JsS2NPjl8UoMqIS.jpg",
+        "first_air_date": "2021-11-24",
+        "genre_ids": [
+          18,
+          35,
+          10759
+        ],
+        "id": 88329,
+        "name": "Hawkeye",
+        "origin_country": [
+          "US"
+        ],
+        "original_language": "en",
+        "original_name": "Hawkeye",
+        "overview": "Former Avenger Clint Barton has a seemingly simple mission: get back to his family for Christmas. Possible? Maybe with the help of Kate Bishop, a 22-year-old archer with dreams of becoming a superhero. The two are forced to work together when a presence from Barton’s past threatens to derail far more than the festive spirit.",
+        "popularity": 76.29,
+        "poster_path": "/uQdAET8dl403BIVktl5gjtzXRDT.jpg",
+        "vote_average": 8,
+        "vote_count": 2753,
+        "number_of_seasons": 6
+      },
+      {
+        "backdrop_path": "/p7PLOCD4bqLV4sJmeLrwvkufHt3.jpg",
+        "first_air_date": "2021-06-09",
+        "genre_ids": [
+          18,
+          10765
+        ],
+        "id": 84958,
+        "name": "Loki",
+        "origin_country": [
+          "US"
+        ],
+        "original_language": "en",
+        "original_name": "Loki",
+        "overview": "After stealing the Tesseract during the events of “Avengers: Endgame,” an alternate version of Loki is brought to the mysterious Time Variance Authority, a bureaucratic organization that exists outside of time and space and monitors the timeline. They give Loki a choice: face being erased from existence due to being a “time variant” or help fix the timeline and stop a greater threat.",
+        "popularity": 86.056,
+        "poster_path": "/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
+        "vote_average": 8.2,
+        "vote_count": 9947,
+        "number_of_seasons": 3
+      },
+      {
+        "backdrop_path": "/iux1vKPT7Vw1AzetZb4Jz6wfYsm.jpg",
+        "first_air_date": "2022-03-30",
+        "genre_ids": [
+          10759,
+          10765,
+          9648
+        ],
+        "id": 92749,
+        "name": "Moon Knight",
+        "origin_country": [
+          "US"
+        ],
+        "original_language": "en",
+        "original_name": "Moon Knight",
+        "overview": "When Steven Grant, a mild-mannered gift-shop employee, becomes plagued with blackouts and memories of another life, he discovers he has dissociative identity disorder and shares a body with mercenary Marc Spector. As Steven/Marc’s enemies converge upon them, they must navigate their complex identities while thrust into a deadly mystery among the powerful gods of Egypt.",
+        "popularity": 73.624,
+        "poster_path": "/vKDUmKO6F9bSKKyHhg7YGbgcEeF.jpg",
+        "vote_average": 7.8,
+        "vote_count": 2243,
+        "number_of_seasons": 3
+      },
+      {
         "adult": false,
         "backdrop_path": "/r40ke0kVPhL5b1oHgQaB5BatoSk.jpg",
         "genre_ids": [
@@ -66,27 +131,7 @@ export const frontSeries=
         "vote_count": 1696,
         "number_of_seasons": 2
       },
-      {
-        "backdrop_path": "/p7PLOCD4bqLV4sJmeLrwvkufHt3.jpg",
-        "first_air_date": "2021-06-09",
-        "genre_ids": [
-          18,
-          10765
-        ],
-        "id": 84958,
-        "name": "Loki",
-        "origin_country": [
-          "US"
-        ],
-        "original_language": "en",
-        "original_name": "Loki",
-        "overview": "After stealing the Tesseract during the events of “Avengers: Endgame,” an alternate version of Loki is brought to the mysterious Time Variance Authority, a bureaucratic organization that exists outside of time and space and monitors the timeline. They give Loki a choice: face being erased from existence due to being a “time variant” or help fix the timeline and stop a greater threat.",
-        "popularity": 86.056,
-        "poster_path": "/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
-        "vote_average": 8.2,
-        "vote_count": 9947,
-        "number_of_seasons": 3
-      },
+
       {
         "backdrop_path": "/33j33midGw49BBxiqlNZeZ6PZ0O.jpg",
         "first_air_date": "2021-01-15",
@@ -108,50 +153,6 @@ export const frontSeries=
         "vote_average": 8.3,
         "vote_count": 11123,
         "number_of_seasons": 2
-      },
-      {
-        "backdrop_path": "/1R68vl3d5s86JsS2NPjl8UoMqIS.jpg",
-        "first_air_date": "2021-11-24",
-        "genre_ids": [
-          18,
-          35,
-          10759
-        ],
-        "id": 88329,
-        "name": "Hawkeye",
-        "origin_country": [
-          "US"
-        ],
-        "original_language": "en",
-        "original_name": "Hawkeye",
-        "overview": "Former Avenger Clint Barton has a seemingly simple mission: get back to his family for Christmas. Possible? Maybe with the help of Kate Bishop, a 22-year-old archer with dreams of becoming a superhero. The two are forced to work together when a presence from Barton’s past threatens to derail far more than the festive spirit.",
-        "popularity": 76.29,
-        "poster_path": "/uQdAET8dl403BIVktl5gjtzXRDT.jpg",
-        "vote_average": 8,
-        "vote_count": 2753,
-        "number_of_seasons": 6
-      },
-      {
-        "backdrop_path": "/iux1vKPT7Vw1AzetZb4Jz6wfYsm.jpg",
-        "first_air_date": "2022-03-30",
-        "genre_ids": [
-          10759,
-          10765,
-          9648
-        ],
-        "id": 92749,
-        "name": "Moon Knight",
-        "origin_country": [
-          "US"
-        ],
-        "original_language": "en",
-        "original_name": "Moon Knight",
-        "overview": "When Steven Grant, a mild-mannered gift-shop employee, becomes plagued with blackouts and memories of another life, he discovers he has dissociative identity disorder and shares a body with mercenary Marc Spector. As Steven/Marc’s enemies converge upon them, they must navigate their complex identities while thrust into a deadly mystery among the powerful gods of Egypt.",
-        "popularity": 73.624,
-        "poster_path": "/vKDUmKO6F9bSKKyHhg7YGbgcEeF.jpg",
-        "vote_average": 7.8,
-        "vote_count": 2243,
-        "number_of_seasons": 3
       },
       {
         "backdrop_path": "/4N6zEMfZ57zNEQcM8gWeERFupMv.jpg",

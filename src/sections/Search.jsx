@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import { movie_genres,tv_genres } from '../utils/genres';
 import Navbar from '../components/Navbar';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 function Search() {
     const [popular, setPopular]= useState([]);
@@ -11,6 +11,7 @@ function Search() {
     const [title, setTitle]= useState('Popular Searches')
     const [hovered, setHovered]= useState(false)
     const inputRef= useRef(null)
+    const navigate= useNavigate()
     const options = {
         method: 'GET',
         headers: {
@@ -95,7 +96,13 @@ function Search() {
                                 />
                                 <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
                                     <div className='flex gap-2 w-[95%]' >
-                                        <button className='text-[8px] h-[30px] w-[135px] flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px]' >
+                                        <button 
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            window.open(`https://www.youtube.com/watch?v=rcBntNCD4ZY`, '_blank');
+                                        }}
+                                        className='text-[8px] h-[30px] w-[135px] flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px]' >
+
                                             <img src="./images/dark-blue-play.png" alt="" className='w-2 h-2'/>
                                             <span className='font-medium text-[#16181f]' >Watch Now</span>
                                         </button>

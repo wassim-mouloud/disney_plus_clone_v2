@@ -22,6 +22,9 @@ function MovieDetail() {
             .catch(err => console.error(err));
     },[id])
 
+    const productionCompanyWithLogo = movie.production_companies ? movie.production_companies.find((company) => company.logo_path !== null) : null;
+
+
 
 
   return (
@@ -35,10 +38,9 @@ function MovieDetail() {
             >
             </div>
             <div className='lg:absolute lg:top-[12%] lg:ml-[100px] lg:max-w-[450px]' >
-                {movie.production_companies && (
-                    <img src={`https://image.tmdb.org/t/p/original${movie.production_companies[0].logo_path}`} alt="" className='hidden lg:block  h-[70px] px-3' />
-
-                )}
+                    {productionCompanyWithLogo && (
+                        <img src={`https://image.tmdb.org/t/p/original${productionCompanyWithLogo.logo_path}`} alt="" className='hidden lg:block  h-[70px] px-3' />
+                    )}
                 <p className='px-3 py-4 font-bold text-[22px] lg:text-[30px] text-[#d9d9da] lg:text-white' >{movie.original_title}</p>
                 <div className='flex items-center gap-2 lg:gap-4 px-3 py-1 text-[14px] font-medium text-[#e5e5e5]' >
                     <span className='' >{typeof(movie.release_date)==='string' && movie.release_date.slice(0,4)}</span>
@@ -59,7 +61,7 @@ function MovieDetail() {
                     })}
                 </div>
         </div>
-        <GenreSlider  title='Movies you might like' url1='https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_companies=420' url2='https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc&with_companies=420'/>
+        <GenreSlider title='Movies you might like' url1='https://api.themoviedb.org/3/movie/popular?language=en-US&page=1' url2='https://api.themoviedb.org/3/movie/popular?language=en-US&page=2' />
 
     </div>
     </div>

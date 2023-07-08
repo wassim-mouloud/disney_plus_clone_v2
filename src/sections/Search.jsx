@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {motion, AnimatePresence} from 'framer-motion';
 import { movie_genres,tv_genres } from '../utils/genres';
+import Footer from '../components/Footer'
 import Navbar from '../components/Navbar';
 import {Link, useNavigate} from 'react-router-dom'
 
@@ -139,6 +139,7 @@ function Search() {
                     )}
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }

@@ -61,7 +61,7 @@ function MovieDetail() {
                     })}
                 </div>
         </div>
-        <GenreSlider title='Movies you might like' url1='https://api.themoviedb.org/3/movie/popular?language=en-US&page=1' url2='https://api.themoviedb.org/3/movie/popular?language=en-US&page=2' />
+        <GenreSlider title='More like this' url1={`https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`} url2={`https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=2`} />
 
     </div>
     </div>

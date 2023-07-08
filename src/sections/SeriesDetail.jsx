@@ -58,7 +58,7 @@ function SeriesDetail() {
                     })}
                 </div>
         </div>
-        <SeriesGenreSlider title='Series you might like' url1='https://api.themoviedb.org/3/trending/tv/day?language=en-US' url2='https://api.themoviedb.org/3/trending/tv/day?language=en-US'/>
+        <SeriesGenreSlider title='More like this' url1={`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`} url2={`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=2`} />
 
     </div>
     </div>

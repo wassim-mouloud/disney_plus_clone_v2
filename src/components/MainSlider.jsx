@@ -178,7 +178,7 @@ useEffect(()=>{
                                                 )
                                             })}
                                             <div className='flex justify-center items-center text-[#d9d9da] gap-1' >
-                                                <img src="./images/star.png" alt="" className='w-2 h-2'/>
+                                                <img src="/images/star.png" alt="" className='w-2 h-2'/>
                                                 <span className='text-[8px]' >{movie.vote_average}</span>
                                             </div>
                             

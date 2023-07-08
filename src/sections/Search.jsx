@@ -76,7 +76,7 @@ function Search() {
             <Navbar/>
             <div className='w-screen' >
                 <div className='w-[90%] lg:w-[80%] flex items-center gap-2 bg-[#262833] mt-5 mx-auto rounded-[7px] p-4' >
-                    <img src="./images/search.png" alt="" className='w-6 h-6 lg:w-8 lg:h-8' />
+                    <img src="/images/search.png" alt="" className='w-6 h-6 lg:w-8 lg:h-8' />
                     <input ref={inputRef} onChange={handleChange} type="text" placeholder='Movies, shows and more' className='w-[100%] h-[40px] rounded-[7px] bg-[#262833] outline-none text-white text-[14px] lg:text-[18px]'/>
                 </div>
                 <p className='text-white w-[90%] lg:w-[80%] mx-auto text-[20px] font-semibold py-4' >{title}</p>
@@ -105,7 +105,7 @@ function Search() {
                                                 window.open(`https://www.youtube.com/watch?v=rcBntNCD4ZY`, '_blank');
                                             }}
                                             className='text-[8px] h-[30px] w-[135px] flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px] lg:hover:scale-105 transition-all' >
-                                                <img src="./images/dark-blue-play.png" alt="" className='w-2 h-2'/>
+                                                <img src="/images/dark-blue-play.png" alt="" className='w-2 h-2'/>
                                                 <span className='font-medium text-[#16181f]' >Watch Now</span>
                                             </button>
                                             <button className='text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white lg:hover:scale-105 transition-all ' >+</button>
@@ -129,7 +129,7 @@ function Search() {
                                                     )
                                                 })}
                                                 <div className='flex justify-center items-center text-[#d9d9da] gap-1' >
-                                                    <img src="./images/star.png" alt="" className='w-2 h-2'/>
+                                                    <img src="/images/star.png" alt="" className='w-2 h-2'/>
                                                     <span className='text-[8px]' >{movie.vote_average}</span>
                                                 </div>
                                             </div>

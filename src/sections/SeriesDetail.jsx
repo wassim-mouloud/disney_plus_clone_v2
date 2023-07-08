@@ -27,7 +27,7 @@ function SeriesDetail() {
     <div>
         <Navbar/>
         <div className='w-screen h-[110vh] lg:h-[120vh] relative text-[#d9d9da]' >
-            <img src={`https://image.tmdb.org/t/p/original${show.backdrop_path}`} alt="" className='h-[30vh] lg:h-[70vh] object-cover  w-full rounded-lg' />
+            <img src={`https://image.tmdb.org/t/p/original${show.backdrop_path}`} alt="" className='h-[30vh] lg:h-[70vh] object-cover lg:object-top w-full rounded-lg' />
             <div 
                     className="absolute inset-0 w-screen lg:h-[70vh] hidden lg:block" 
                     style={{ backgroundImage: 'linear-gradient(to bottom, transparent, #0f1013)' }}
@@ -58,7 +58,7 @@ function SeriesDetail() {
                     })}
                 </div>
         </div>
-        <SeriesGenreSlider title='More like this' url1={`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`} url2={`https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=2`} />
+        <SeriesGenreSlider title='More like this' url1={`https://api.themoviedb.org/3/tv/${id}/recommendations?language=en-US&page=1`} url2={`https://api.themoviedb.org/3/tv/${id}/recommendations?language=en-US&page=2`} />
 
     </div>
     </div>

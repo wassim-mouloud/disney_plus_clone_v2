@@ -109,3 +109,16 @@ body{
         opacity: 1;
     }
 }
+
+.skeleton{
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading{
+    0%{
+        background-color:hsl(227, 17%, 20%) ;
+    }
+    100%{
+        background-color:hsl(227, 17%, 10%) ;
+    }
+}

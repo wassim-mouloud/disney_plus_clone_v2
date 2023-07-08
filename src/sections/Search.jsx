@@ -3,6 +3,7 @@ import { movie_genres,tv_genres } from '../utils/genres';
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar';
 import {Link, useNavigate} from 'react-router-dom'
+import '../App.css'
 
 function Search() {
     const [popular, setPopular]= useState([]);
@@ -86,7 +87,7 @@ function Search() {
                                 to={`${index < 5 || inputRef.current.value===''?`/MovieDetail/${movie.id}`:`/SeriesDetail/${movie.id}`}`}
                                 key={index}
                                 layout
-                                className={`group h-[190px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-300 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.9] lg:hover:scale-y-[1.3] lg:hover:z-[99]':''} ${index%6===0?'origin-left':''} `}
+                                className={`group fade h-[190px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-300 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.9] lg:hover:scale-y-[1.3] lg:hover:z-[99]':''} ${index%6===0?'origin-left':''} `}
                                 onMouseEnter={()=>handleMouseEnter(movie.id)}
                                 onMouseLeave={handleMouseLeave}>
                                 <img

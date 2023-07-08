@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import MainSlider from './MainSlider';
-
+import {motion} from 'framer-motion'
+import '../App.css'
 
 function GenreSlider({title, url1, url2, mt}) {
     const [trending, setTrending]= useState([])
@@ -31,10 +32,17 @@ function GenreSlider({title, url1, url2, mt}) {
         getTrending()
       },[])
   return (
-    <div className={`flex flex-col gap-1 ml-3 lg:ml-[100px] lg:w-[calc(100vw-100px)] ${mt?`mt-[${mt}]`:'mt-10'}`} >
+    <motion.div
+    initial={{opacity:0}}
+    whileInView={{opacity:1,
+      transition:{
+        duration:2
+      }
+    }} 
+    className={`flex flex-col gap-1 ml-3 lg:ml-[100px] lg:w-[calc(100vw-100px)] ${mt?`mt-[${mt}]`:'mt-10'}`} >
         <p className='lg:ml-0 text-white font-semibold text-[20px]' >{title}</p>
         <MainSlider trending={trending} />
-    </div>
+    </motion.div>
   )
 }
 

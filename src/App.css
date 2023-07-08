@@ -96,3 +96,16 @@ body{
         opacity: 1;
     }
 }
+
+.fade{
+    animation : fade 1s linear;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

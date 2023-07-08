@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import MainSlider from './MainSlider';
 import SeriesSlider from './SeriesSlider'
+import {motion} from 'framer-motion'
 
 
 function SeriesGenreSlider({title, url1, url2, mb}) {
@@ -32,10 +32,17 @@ function SeriesGenreSlider({title, url1, url2, mb}) {
         getTrending()
       },[])
   return (
-    <div className={`flex flex-col gap-1 ml-3 lg:ml-[100px] mt-10  lg:w-[calc(100vw-100px)] mb-[${mb}] lg:mb-0`} >
+    <motion.div     
+    initial={{opacity:0}}
+    whileInView={{opacity:1,
+      transition:{
+        duration:2
+      }
+    }}  
+    className={`flex flex-col gap-1 ml-3 lg:ml-[100px] mt-10  lg:w-[calc(100vw-100px)] mb-[${mb}] lg:mb-0`} >
         <p className=' text-white font-semibold text-[20px]' >{title}</p>
         <SeriesSlider trending={trending} />
-    </div>
+    </motion.div>
   )
 }
 

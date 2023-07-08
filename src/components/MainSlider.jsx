@@ -143,18 +143,18 @@ useEffect(()=>{
             })}
             {trending.map((movie, index) => {
                 return (
-                        <Link to={`/MovieDetail/${movie.id}`} key={index} onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={handleMouseLeave} className={`group ${isHovered && movie.id===hoveredMovieId ? 'lg:hover:scale-x-[2] lg:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] w-[110px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] ${index%7 === 0 ? "origin-left" : ''} ${index%7  === 6 && index!==0 ? "origin-right" : ''}`} >
+                        <Link to={`/MovieDetail/${movie.id}`} key={index} onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={handleMouseLeave} className={`group  ${isHovered && movie.id===hoveredMovieId ? 'lg:hover:scale-x-[2] lg:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] w-[110px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] ${index%7 === 0 ? "origin-left" : ''} ${index%7  === 6 && index!==0 ? "origin-right" : ''}`} >
                        
 
                                 <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="" className={` ${isHovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%] lg:group-hover:object-top lg:group-hover:object-cover ':''}    rounded-[5px] h-full w-full`}/>
                                 <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${isHovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
                                     <div className='flex gap-2 w-[95%]' >
-                                        <a className='h-[30px] w-[135px]' href={`https://www.youtube.com/watch?v=${trailers[index]}`} target="_blank" rel="noopener noreferrer">
+                                        <div className='h-[30px] w-[135px]' href={`https://www.youtube.com/watch?v=${trailers[index]}`} target="_blank" rel="noopener noreferrer">
                                             <button className='lg:hover:scale-[1.02] transition-all duration-300 text-[8px] h-full w-full flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px]' >
                                                 <img src="/images/dark-blue-play.png" alt="" className='w-2 h-2'/>
                                                 <span className='font-medium text-[#16181f]' >Watch Now</span>
                                             </button>
-                                        </a>
+                                        </div>
                                         <button className='lg:hover:scale-[1.02] transition-all duration-300 text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white' >+</button>
                                     </div>
                                     <p className='font-semibold text-[10px] text-[#d9d9da] py-1 ' >{movie.original_title}</p>

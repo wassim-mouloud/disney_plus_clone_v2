@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar';
 import {Link, useNavigate} from 'react-router-dom'
 import '../App.css'
+import {motion} from 'framer-motion'
 
 function Search() {
     const [popular, setPopular]= useState([]);
@@ -80,62 +81,62 @@ function Search() {
                 </div>
                 <p className='text-white w-[90%] lg:w-[80%] mx-auto text-[20px] font-semibold py-4' >{title}</p>
 
-                <div layout className='w-[90%] lg:w-[80%] grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2  mx-auto mb-[120px] lg:mb-0' >
+                <div layout className='w-[90%] lg:w-[80%] grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 gap-2  mx-auto mb-[120px] lg:mb-0' >
                     {content.map((movie, index) => 
                         movie.poster_path ? (
-                            <Link
-                                to={`${index < 5 || inputRef.current.value===''?`/MovieDetail/${movie.id}`:`/SeriesDetail/${movie.id}`}`}
-                                key={index}
-                                layout
-                                className={`group fade h-[190px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-300 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.9] lg:hover:scale-y-[1.3] lg:hover:z-[99]':''} ${index%6===0?'origin-left':''} `}
-                                onMouseEnter={()=>handleMouseEnter(movie.id)}
-                                onMouseLeave={handleMouseLeave}>
-                                <img
-                                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                                    alt=""
-                                    className={` rounded-t-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%]  lg:group-hover:object-cover lg:group-hover:object-top':''} `}
-                                />
-                                <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
-                                    <div className='flex gap-2 w-[95%]' >
-                                        <button 
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            window.open(`https://www.youtube.com/watch?v=rcBntNCD4ZY`, '_blank');
-                                        }}
-                                        className='text-[8px] h-[30px] w-[135px] flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px]' >
-
-                                            <img src="./images/dark-blue-play.png" alt="" className='w-2 h-2'/>
-                                            <span className='font-medium text-[#16181f]' >Watch Now</span>
-                                        </button>
-                                        <button className='text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white' >+</button>
-                                    </div>
-                                    <p className='font-bold text-[10px] text-[#d9d9da] py-1' >{index<5 || inputRef.current.value==='' ?movie.original_title:movie.original_name}</p>
-                                    <div className='w-[95%] flex flex-col gap-1' >
-                                        <div className='flex gap-1  items-center text-[8px] font-medium ' >
-                                        <span className='text-[#d9d9da] text-[8px]' >
-                                            {index < 5 || inputRef.current.value===''
-                                                ? (typeof(movie.release_date) === 'string' ? movie.release_date.slice(0, 4) : null)
-                                                : (typeof(movie.first_air_date) === 'string' ? movie.first_air_date.slice(0, 4) : null)
-                                            }
-                                        </span>
-                                            <span className='text-[#a2a3a5] text-[9px]' >•</span>
-                                            {movie.genre_ids.slice(0, 2).map(genre_id => {
-                                                return (
-                                                    <div className='flex gap-1 text-[8px]'>
-                                                        <span className='text-[#d9d9da]'>{index<5 || inputRef.current.value==='' ?movie_genres[genre_id]:tv_genres[genre_id]}</span>
-                                                        <span className='text-[#a2a3a5]' >•</span>
-                                                    </div>
-                                                )
-                                            })}
-                                            <div className='flex justify-center items-center text-[#d9d9da] gap-1' >
-                                                <img src="./images/star.png" alt="" className='w-2 h-2'/>
-                                                <span className='text-[8px]' >{movie.vote_average}</span>
-                                            </div>
+                                <Link
+                                    to={`${index < 5 || inputRef.current.value===''?`/MovieDetail/${movie.id}`:`/SeriesDetail/${movie.id}`}`}
+                                    key={index}
+                                    layout
+                                    className={`group fade h-[190px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-300 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.9] lg:hover:scale-y-[1.3] lg:hover:z-[99]':''} ${index%6===0?'origin-left':''} `}
+                                    onMouseEnter={()=>handleMouseEnter(movie.id)}
+                                    onMouseLeave={handleMouseLeave}>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                                        alt=""
+                                        className={` rounded-t-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%]  lg:group-hover:object-cover lg:group-hover:object-top':''} `}
+                                    />
+                                    <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
+                                        <div className='flex gap-2 w-[95%]' >
+                                            <button
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                e.stopPropagation();
+                                                window.open(`https://www.youtube.com/watch?v=rcBntNCD4ZY`, '_blank');
+                                            }}
+                                            className='text-[8px] h-[30px] w-[135px] flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px] lg:hover:scale-105 transition-all' >
+                                                <img src="./images/dark-blue-play.png" alt="" className='w-2 h-2'/>
+                                                <span className='font-medium text-[#16181f]' >Watch Now</span>
+                                            </button>
+                                            <button className='text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white lg:hover:scale-105 transition-all ' >+</button>
                                         </div>
-                                        <p className='text-[#7c849b] text-[7px] flex-grow-0 flex-shrink-0 w-full' >{movie.overview.split(' ').slice(0,22).join(' ')}</p>
+                                        <p className='font-bold text-[10px] text-[#d9d9da] py-1' >{index<5 || inputRef.current.value==='' ?movie.original_title:movie.original_name}</p>
+                                        <div className='w-[95%] flex flex-col gap-1' >
+                                            <div className='flex gap-1  items-center text-[8px] font-medium ' >
+                                            <span className='text-[#d9d9da] text-[8px]' >
+                                                {index < 5 || inputRef.current.value===''
+                                                    ? (typeof(movie.release_date) === 'string' ? movie.release_date.slice(0, 4) : null)
+                                                    : (typeof(movie.first_air_date) === 'string' ? movie.first_air_date.slice(0, 4) : null)
+                                                }
+                                            </span>
+                                                <span className='text-[#a2a3a5] text-[9px]' >•</span>
+                                                {movie.genre_ids.slice(0, 2).map(genre_id => {
+                                                    return (
+                                                        <div className='flex gap-1 text-[8px]'>
+                                                            <span className='text-[#d9d9da]'>{index<5 || inputRef.current.value==='' ?movie_genres[genre_id]:tv_genres[genre_id]}</span>
+                                                            <span className='text-[#a2a3a5]' >•</span>
+                                                        </div>
+                                                    )
+                                                })}
+                                                <div className='flex justify-center items-center text-[#d9d9da] gap-1' >
+                                                    <img src="./images/star.png" alt="" className='w-2 h-2'/>
+                                                    <span className='text-[8px]' >{movie.vote_average}</span>
+                                                </div>
+                                            </div>
+                                            <p className='text-[#7c849b] text-[7px] flex-grow-0 flex-shrink-0 w-full' >{movie.overview.split(' ').slice(0,22).join(' ')}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
                         ) : null
                     )}
                 </div>

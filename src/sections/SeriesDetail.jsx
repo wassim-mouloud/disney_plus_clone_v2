@@ -27,7 +27,7 @@ function SeriesDetail() {
     <div>
         <Navbar/>
         <div className='w-screen h-[110vh] lg:h-[120vh] relative text-[#d9d9da]' >
-            <img src={`https://image.tmdb.org/t/p/original${show.backdrop_path}`} alt="" className='h-[30vh] lg:h-[70vh] object-cover lg:object-top w-full rounded-lg' />
+            <img src={`https://image.tmdb.org/t/p/w1280${show.backdrop_path}`} alt="" className='h-[30vh] lg:h-[70vh] object-cover lg:object-top w-full rounded-lg' />
             <div 
                     className="absolute inset-0 w-screen lg:h-[70vh] hidden lg:block" 
                     style={{ backgroundImage: 'linear-gradient(to bottom, transparent, #0f1013)' }}
@@ -35,7 +35,7 @@ function SeriesDetail() {
             </div>
             <div className='lg:absolute lg:top-[12%] lg:ml-[100px] lg:max-w-[450px]' >
                 {show.production_companies && (
-                    <img src={`https://image.tmdb.org/t/p/original${show?.networks[0]?.logo_path}`} alt="" className='hidden lg:block  h-[70px] px-3' />
+                    <img src={`https://image.tmdb.org/t/p/w500${show?.networks[0]?.logo_path}`} alt="" className='hidden lg:block  h-[70px] px-3' />
 
                 )}
                 <p className='px-3 py-4 font-bold text-[22px] lg:text-[30px] text-[#d9d9da] lg:text-white' >{show.name}</p>

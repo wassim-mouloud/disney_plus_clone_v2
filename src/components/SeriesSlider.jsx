@@ -20,11 +20,6 @@ function SeriesSlider({ trending }) {
         setFirst(trending.slice(0, 8))
         setLast(trending.slice(14, 21))
 
-        // Preload backdrop images
-        trending.forEach(movie => {
-            const img = new Image();
-            img.src = `https://image.tmdb.org/t/p/original${movie?.backdrop_path}`;
-        });
     }
   }, [trending])
 
@@ -117,14 +112,14 @@ useEffect(()=>{
             {last.map((movie, index) => {
                 return (
                     <div key={index} className=' h-[170px] cursor-pointer lg:h-[250px] lg:min-h-[250px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
-                        <img loading='lazy' src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`} alt="" className={`group-hover:h-[45%]   rounded-[5px] h-full w-full`}/>
+                        <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`} alt="" className={`group-hover:h-[45%]   rounded-[5px] h-full w-full`}/>
                     </div>
                 )
             })}
             {trending.map((movie, index) => {
                 return (
                     <Link to={`/SeriesDetail/${movie?.id}`} key={index} onMouseEnter={() => handleMouseEnter(movie?.id)} onMouseLeave={handleMouseLeave} className={`group  ${isHovered && movie?.id===hoveredMovieId ? 'lg:hover:scale-x-[2] lg:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] w-[110px] lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] ${index%7 === 0 ? "origin-left" : ''} ${index%7 === 6 && index!==0 ? "origin-right" : ''}`}>
-                            <img loading='lazy' src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`} alt="" className={`skeleton ${isHovered && movie?.id===hoveredMovieId?'lg:group-hover:h-[40%] lg:group-hover:object-top lg:group-hover:object-cover ':''}    rounded-[5px] h-full w-full`}/>
+                            <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`} alt="" className={`skeleton ${isHovered && movie?.id===hoveredMovieId?'lg:group-hover:h-[40%] lg:group-hover:object-top lg:group-hover:object-cover ':''}    rounded-[5px] h-full w-full`}/>
                             <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${isHovered && movie?.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
                                 <div className='flex gap-2 w-[95%]' >
                                     <div className='h-[30px] w-[135px]' to={`https://www.youtube.com/watch?v=${trailers[index]}`} target="_blank" rel="noopener noreferrer">
@@ -171,7 +166,7 @@ useEffect(()=>{
             {first.map((movie, index) => {
                 return (
                     <div key={index} className=' h-[170px] lg:h-[250px] cursor-pointer lg:min-h-[250px]  lg:w-[calc(100%/7-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
-                        <img loading='lazy' src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`} alt="" className={`group-hover:h-[45%]  rounded-[5px] h-full w-full`}/>
+                        <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`} alt="" className={`group-hover:h-[45%]  rounded-[5px] h-full w-full`}/>
                     </div>
                 )
             })}

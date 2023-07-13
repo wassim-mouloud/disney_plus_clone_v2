@@ -39,7 +39,7 @@ function MovieDetail() {
             </div>
             <div className='lg:absolute lg:top-[12%] lg:ml-[100px] lg:max-w-[450px]' >
                     {productionCompanyWithLogo && (
-                        <img src={`https://image.tmdb.org/t/p/original${productionCompanyWithLogo.logo_path}`} alt="" className='hidden lg:block  h-[70px] px-3' />
+                        <img src={`https://image.tmdb.org/t/p/w500${productionCompanyWithLogo.logo_path}`} alt="" className='hidden lg:block  h-[70px] px-3' />
                     )}
                 <p className='px-3 py-4 font-bold text-[22px] lg:text-[30px] text-[#d9d9da] lg:text-white' >{movie.original_title}</p>
                 <div className='flex items-center gap-2 lg:gap-4 px-3 py-1 text-[14px] font-medium text-[#e5e5e5]' >

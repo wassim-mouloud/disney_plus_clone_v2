@@ -94,7 +94,7 @@ function Search() {
                                     <img
                                         loading='lazy'
                                         onLoad={()=>setIsLoading(false)}
-                                        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                         alt=""
                                         className={`${isLoading?'skeleton':''} rounded-t-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%]  lg:group-hover:object-cover lg:group-hover:object-top':''} `}
                                     />

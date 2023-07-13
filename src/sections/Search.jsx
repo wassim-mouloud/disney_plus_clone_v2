@@ -96,7 +96,7 @@ function Search() {
                                         onLoad={()=>setIsLoading(false)}
                                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                         alt=""
-                                        className={`${isLoading?'skeleton':''} rounded-t-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%]  lg:group-hover:object-cover lg:group-hover:object-top':''} `}
+                                        className={`${isLoading?'skeleton':''} rounded-t-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%]  lg:group-hover:object-cover lg:group-hover:object-center':''} `}
                                     />
                                     <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
                                         <div className='flex gap-2 w-[95%]' >

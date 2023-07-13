@@ -47,6 +47,8 @@ function MovieDetail() {
                     <span>•</span>
                     <span>{Math.floor(movie.runtime/60)} h {(movie.runtime%60)} m</span>
                     <span>•</span>
+                    <img src="/images/star.png" alt="" className='w-3 h-3' />
+                    <span>{movie.vote_average && (movie.vote_average).toString().slice(0,3)}</span>
                     <div className='bg-[#5b5b5d] lg:bg-[rgba(0,0,0,0.2)] text-[#e5e5e5]  rounded-md p-1 text-[14px]' >13+</div>
                 </div>
                 <p className='text-[#7c849b] lg:text-white px-3 text-[14px] font-semibold py-3' >{movie.overview}</p>

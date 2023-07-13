@@ -143,7 +143,7 @@ function Hero({ frontMovies }) {
                                 <span>{frontMovies[index].release_date.slice(0,4)}</span>
                                 <span className=''>•</span>
                                 <span>{Math.floor(frontMovies[index].runtime/60)} h {(frontMovies[index].runtime%60)} m</span>
-                                <img src="./images/star.png" alt="" className='w-3 h-3' />
+                                <img src="/images/star.png" alt="" className='w-3 h-3' />
                                 <span>{(frontMovies[index].vote_average).toString().slice(0,3)}</span>
                             </div>
 

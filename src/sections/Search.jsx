@@ -132,7 +132,7 @@ function Search() {
                                                 })}
                                                 <div className='flex justify-center items-center text-[#d9d9da] gap-1' >
                                                     <img loading='lazy' src="/images/star.png" alt="" className='w-2 h-2'/>
-                                                    <span className='text-[8px]' >{movie.vote_average}</span>
+                                                    <span className='text-[8px]' >{movie.vote_average && (movie.vote_average).toString().slice(0,3)}</span>
                                                 </div>
                                             </div>
                                             <p className='text-[#7c849b] text-[7px] flex-grow-0 flex-shrink-0 w-full' >{movie.overview.split(' ').slice(0,22).join(' ')}</p>

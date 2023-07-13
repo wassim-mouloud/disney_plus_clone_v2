@@ -191,7 +191,7 @@ function Hero({ frontMovies }) {
                                             onClick={()=>setIndex(n)} 
                                             className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
-                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/original${frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
+                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/w300${frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
                                         </div>
                                     )
                                 })}
@@ -202,7 +202,7 @@ function Hero({ frontMovies }) {
                                             onClick={()=>setIndex(n)} 
                                             className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
-                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/original${frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
+                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/w300${frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
                                         </div>
                                     )
                                 })}
@@ -213,7 +213,7 @@ function Hero({ frontMovies }) {
                                             onClick={()=>setIndex(n)} 
                                             className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
-                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/original${frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
+                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/w300${frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
                                         </div>
                                     )
                                 })}
@@ -245,14 +245,7 @@ function Hero({ frontMovies }) {
                 </div>
             }
 
-            {/* <div ref={scrollDots} className='flex gap-2 overflow-x-scroll w-[80px] mx-auto mt-4 scrollbar-hide'>
-                {frontMovies && frontMovies.map((movie, i) => {
-                    return <div 
-                        key={i} 
-                        className={`lg:hidden h-[8px] w-[8px]  rounded-full  flex-shrink-0 ${index === i ? "bg-white opacity-100 scale-105" : 'bg-[#c3c3c3] opacity-40 '}`} 
-                    />;
-                })}
-            </div> */}
+ 
             <div className='flex justify-center lg:justify-start lg:ml-[100px] w-screen mt-7 lg:absolute bottom-4 z-[90]' >
                 <div className='w-[95vw] lg:w-[90vw] flex justify-between gap-1 lg:gap-2 flex-wrap lg:flex-nowrap' >
                         {viewers.map((viewer, index) => {

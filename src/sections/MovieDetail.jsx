@@ -53,7 +53,7 @@ function MovieDetail() {
                 <div className='flex gap-1 py-2 ml-3 ' >
                     {movie.genres && movie.genres.map((genre, index)=>{
                         return(
-                            <div key={index} className='flex flex-shrink-0 gap-1 overflow-x-scroll text-[14px] font-medium' >
+                            <div key={index} className='flex flex-shrink-0 gap-1 overflow-x-scroll lg:overflow-x-auto text-[14px] font-medium' >
                                 <span className=' text-[#e5e5e5] '>{genre.name}</span>
                                 <span className={`text-[#7c849b] ${index===movie.genres.length-1?'hidden':'flex'}`} >|</span>
                             </div>

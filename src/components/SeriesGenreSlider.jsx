@@ -30,7 +30,7 @@ function SeriesGenreSlider({title, url1, url2, mb}) {
         }
 
         getTrending()
-      },[])
+      },[url1])
   return (
     <motion.div     
     initial={{opacity:0}}

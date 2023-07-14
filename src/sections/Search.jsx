@@ -81,7 +81,7 @@ function Search() {
                 </div>
                 <p className='text-white w-[90%] lg:w-[80%] mx-auto text-[20px] font-semibold py-4' >{title}</p>
 
-                <div layout className='w-[90%] lg:w-[80%] grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 gap-2  mx-auto mb-[120px] lg:mb-0' >
+                <div layout className='w-[90%] lg:w-[80%] grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-7 gap-2  mx-auto mb-[120px] lg:mb-0' >
                     {content.map((movie, index) => 
                         movie.poster_path ? (
                                 <Link

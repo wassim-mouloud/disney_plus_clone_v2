@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useResolvedPath, useMatch} from 'react-router-dom'
 import '../App.css';
 
 function Navbar() {
@@ -29,6 +29,7 @@ function Navbar() {
 
                 {['Home', 'Search', "Movies", "Series"].map((item, i) => (
                     <Link key={i} to={`${item!=='Home'?`/${item}`:'/'}`} className='ml-[50px] lg:ml-0 last:ml-0'> 
+                        
                         <div
                             key={item}
                             className={`${active === item ? 'text-white' : 'text-[#C3C3C3]'} hover:text-white lg:hover:scale-[1.15] transition-transform duration-300 ${item==="Movies" || item==="Series"?"hidden  lg:flex" :'' } lg:ml-[30px] cursor-pointer h-[50px] flex flex-col gap-3 lg:flex-row items-center flex-shrink-0`}

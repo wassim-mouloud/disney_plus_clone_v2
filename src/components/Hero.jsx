@@ -32,36 +32,46 @@ function Hero({ frontMovies }) {
 
 
     const handlePrevious = async () => {
-        if(sliderRef.current){
-            const sliderIndex = parseInt(getComputedStyle(sliderRef.current).getPropertyValue("--slider-index"));
-            if(sliderIndex===1){
-                sliderRef.current.style.transition='transform 0.5s linear';
-                sliderRef.current.style.setProperty("--slider-index", sliderIndex-1);
-                await sleep(500);
-                sliderRef.current.style.transition='none';
-                sliderRef.current.style.setProperty("--slider-index", 3);
-            }else{
-                sliderRef.current.style.transition='transform 0.5s linear';
-                sliderRef.current.style.setProperty("--slider-index", sliderIndex-1);
+        try{
+            if(sliderRef.current){
+                const sliderIndex = parseInt(getComputedStyle(sliderRef.current).getPropertyValue("--slider-index"));
+                if(sliderIndex===1){
+                    sliderRef.current.style.transition='transform 0.5s linear';
+                    sliderRef.current.style.setProperty("--slider-index", sliderIndex-1);
+                    await sleep(500);
+                    sliderRef.current.style.transition='none';
+                    sliderRef.current.style.setProperty("--slider-index", 3);
+                }else{
+                    sliderRef.current.style.transition='transform 0.5s linear';
+                    sliderRef.current.style.setProperty("--slider-index", sliderIndex-1);
+                }
             }
+        }catch(e){
+            console.log(e)
         }
+
     }
     
     const handleNext= async ()=> {
-        if(sliderRef.current){
-            const sliderIndex=parseInt(getComputedStyle(sliderRef.current).getPropertyValue("--slider-index"))
-
-            if(sliderIndex===3){
-                sliderRef.current.style.transition='transform 0.5s linear'
-                sliderRef.current.style.setProperty("--slider-index", sliderIndex+1);
-                await sleep(500)
-                sliderRef.current.style.transition='none'
-                sliderRef.current.style.setProperty("--slider-index", 1);
-            }else{
-                sliderRef.current.style.transition='transform 0.5s linear'
-                sliderRef.current.style.setProperty("--slider-index", sliderIndex+1);
+        try{
+            if(sliderRef.current){
+                const sliderIndex=parseInt(getComputedStyle(sliderRef.current).getPropertyValue("--slider-index"))
+    
+                if(sliderIndex===3){
+                    sliderRef.current.style.transition='transform 0.5s linear'
+                    sliderRef.current.style.setProperty("--slider-index", sliderIndex+1);
+                    await sleep(500)
+                    sliderRef.current.style.transition='none'
+                    sliderRef.current.style.setProperty("--slider-index", 1);
+                }else{
+                    sliderRef.current.style.transition='transform 0.5s linear'
+                    sliderRef.current.style.setProperty("--slider-index", sliderIndex+1);
+                }
             }
+        }catch(e){
+            console.log(e)
         }
+
 
     }
 

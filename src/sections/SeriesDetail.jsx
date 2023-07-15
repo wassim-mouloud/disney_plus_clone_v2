@@ -26,7 +26,7 @@ function SeriesDetail() {
   return (
     <div>
         <Navbar/>
-        <div className='w-screen h-[110vh] lg:h-[120vh] relative text-[#d9d9da]' >
+        <div className='w-screen h-[130vh] lg:h-[120vh] relative text-[#d9d9da]' >
             <img src={`https://image.tmdb.org/t/p/w1280${show.backdrop_path}`} alt="" className='h-[30vh] lg:h-[70vh] object-cover lg:object-top w-full rounded-lg' />
             <div 
                     className="absolute inset-0 w-screen lg:h-[70vh] hidden lg:block" 

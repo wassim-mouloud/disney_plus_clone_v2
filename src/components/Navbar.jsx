@@ -13,7 +13,7 @@ function Navbar() {
                 >
 
                 <div  
-                    className={`cursor-pointer lg:hover:scale-[1.15] transition-transform duration-300 lg:ml-[30px] h-[50px] flex flex-col gap-3 lg:flex-row items-center ml-[50px]`}
+                    className={`cursor-pointer lg:hover:scale-[1.15] transition-transform duration-300 lg:ml-[10px] h-[50px] flex flex-col gap-3 lg:flex-row items-center ml-[50px]`}
                     onClick={() => setActive("My space")}>
                     <img 
                         src={`/images/daredevil.jpeg`} 
@@ -32,7 +32,7 @@ function Navbar() {
                         
                         <div
                             key={item}
-                            className={`${active === item ? 'text-white' : 'text-[#C3C3C3]'} hover:text-white lg:hover:scale-[1.15] transition-transform duration-300 ${item==="Movies" || item==="Series"?"hidden  lg:flex" :'' } lg:ml-[30px] cursor-pointer h-[50px] flex flex-col gap-3 lg:flex-row items-center flex-shrink-0`}
+                            className={`${active === item ? 'text-white' : 'text-[#C3C3C3]'} hover:text-white lg:hover:scale-[1.15] transition-transform duration-300 ${item==="Movies" || item==="Series"?"hidden  lg:flex" :'' } lg:ml-[10px] cursor-pointer h-[50px] flex flex-col gap-3 lg:flex-row items-center flex-shrink-0`}
                             onClick={() => setActive(item)}
                         >
                             <img

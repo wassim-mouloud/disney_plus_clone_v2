@@ -71,8 +71,6 @@ function Hero({ frontMovies }) {
         }catch(e){
             console.log(e)
         }
-
-
     }
 
 

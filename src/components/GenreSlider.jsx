@@ -41,7 +41,7 @@ function GenreSlider({title, url1, url2, mt}) {
     }} 
     className={`flex flex-col gap-1 ml-3 lg:ml-[100px] lg:w-[calc(100vw-100px)] ${mt?`mt-[${mt}]`:'mt-10'}`} >
         <p className='lg:ml-0 text-white font-semibold text-[20px]' >{title}</p>
-        <MainSlider trending={trending} />
+        <MainSlider trending={trending} title={title} />
     </motion.div>
   )
 }

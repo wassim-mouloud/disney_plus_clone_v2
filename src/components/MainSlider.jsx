@@ -4,7 +4,7 @@ import lexrank from 'lexrank.js'
 import {Link} from 'react-router-dom'
 import '../App.css'
 
-function MainSlider({ trending }) {
+function MainSlider({ trending, title }) {
     
   const sliderRef = useRef(null)
   const [index, setIndex] = useState(1)
@@ -124,7 +124,7 @@ useEffect(()=>{
 
 
   return (
-    <div className='z-[90] py-2 relative w-screen  mt-3  lg:w-[calc(100vw-100px)] overflow-x-clip'>
+    <div className={`${title==='War Movies'?'mb-[100px]':''} z-[90] py-2 relative w-screen  mt-3   lg:w-[calc(100vw-100px)] overflow-x-clip`}>
         <div onClick={handlePrev} className=' cursor-pointer h-full w-[50px] hidden lg:flex opacity-0 hover:opacity-100 transition-opacity duration-500 justify-center items-center absolute left-0 top-0 z-[99]' style={{ backgroundImage: 'linear-gradient(to left, transparent, #0f1013)' }} >
             <img src="/images/previousMain.png" alt="" className='w-4 h-4 z-[99]'  />
         </div>

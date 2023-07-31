@@ -5,7 +5,7 @@ import '../App.css';
 function Navbar() {
     const [active, setActive] = useState("Home")
     const {pathname}= useLocation()
-    console.log(pathname)
+
 
     return (
         <div className=' group w-screen lg:hover:w-[20vw] lg:w-[80px] h-[85px] lg:h-screen fixed bottom-0 lg:top-0 lg:left-0 z-[99] bg-[#0f1013] lg:bg-transparent transition-[width] duration-500' style={{ backgroundImage: `linear-gradient(to right, #0f1013 , transparent)` }}>
@@ -16,14 +16,14 @@ function Navbar() {
 
                 <div  
                     className={`cursor-pointer lg:hover:scale-[1.15] transition-transform duration-300 lg:ml-[10px] h-[50px] flex flex-col gap-3 lg:flex-row items-center ml-[50px]`}
-                    onClick={() => setActive("My space")}>
+                >
                     <img 
                         src={`/images/daredevil.jpeg`} 
                         alt="" 
                         className={`h-[20px] w-[20px] min-w-[20px] object-cover rounded-full`} 
                     />
                     <span 
-                        className={`hover:text-white lg:opacity-0 lg:-translate-x-[70%] lg:group-hover:translate-x-3 lg:group-hover:opacity-100 transition-transform duration-500 ${active === "My space" ? 'text-white' : 'text-[#C3C3C3]'} text-[12px] lg:text-[18px]`}
+                        className={`hover:text-white lg:opacity-0 lg:-translate-x-[70%] lg:group-hover:translate-x-3 lg:group-hover:opacity-100 transition-transform duration-500 ${pathname === "My space" ? 'text-white' : 'text-[#C3C3C3]'} text-[12px] lg:text-[18px]`}
                     >
                         Profile
                     </span>

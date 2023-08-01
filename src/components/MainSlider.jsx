@@ -141,14 +141,10 @@ useEffect(()=>{
                         <Link to={`/MovieDetail/${movie.id}`} key={index} onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={handleMouseLeave} className={`group  ${isHovered && movie.id===hoveredMovieId ? 'lg:hover:scale-x-[1.8] lg:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white  cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] w-[110px] lg:w-[calc(100%/7-8px)] 2xl:w-[calc(100%/8-8px)] flex-shrink-0 rounded-[5px] ${index%7 === 0 ? "origin-left" : ''} ${index%7  === 6 && index!==0 ? "origin-right" : ''}`} >
                        
 
-                                {window.innerWidth>=1024?(
-                                    <div className='' >
-                                        <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${isHovered && movie.id===hoveredMovieId?'hidden  ':''}    `}/>
-                                        <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] ${isHovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%]  flex ':'hidden'} `}/>
-                                    </div>
-                                ):(
-                                    <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full    `}/>
-                                )}
+
+                                <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${isHovered && movie.id===hoveredMovieId?'lg:hidden  ':''}    `}/>
+                                <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] ${isHovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%] hidden  lg:flex ':'hidden'} `}/>
+
 
                                 <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${isHovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
                                     <div className='flex gap-2 2xl:gap-5 w-[95%]' >

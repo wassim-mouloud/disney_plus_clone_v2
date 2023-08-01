@@ -14,6 +14,7 @@ function SeriesGenreSlider({title, url1, url2, mb}) {
         }
       };
 
+
       useEffect(()=>{
         async function getTrending(){
             try{
@@ -22,8 +23,15 @@ function SeriesGenreSlider({title, url1, url2, mb}) {
                 setTrending(json.results)
                 const response2= await fetch(url2, options)
                 const json2= await response2.json()
-                setTrending(prev=>[...prev, json2.results[8]])
-                setTrending(prev=>[...prev].slice(0,21))
+                setTrending(prev=>[...prev, ...json2.results])
+                if(window.innerWidth>=1536){
+                    setTrending(prev=>[...prev].slice(0,23))
+                }else if(window.innerWidth>=1280){
+                    setTrending(prev=>[...prev].slice(0,21))
+                }else if(window.innerWidth>=1024){
+                    setTrending(prev=>[...prev].slice(0,18))
+                }
+  
             }catch(e){
                 console.error(e)
             }

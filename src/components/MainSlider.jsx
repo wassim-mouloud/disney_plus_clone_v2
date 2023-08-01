@@ -20,8 +20,16 @@ function MainSlider({ trending, title }) {
 
   useEffect(() => {
     if (trending.length > 0) {
-        setFirst(trending.slice(0, 8))
-        setLast(trending.slice(14, 21))
+        if(window.innerWidth>=1536){
+            setFirst(trending.slice(0, 8))
+            setLast(trending.slice(15, 23))
+        }else if(window.innerWidth>=1280){
+            setFirst(trending.slice(0, 7))
+            setLast(trending.slice(14, 21))
+        }else if (window.innerWidth>=1024){
+            setFirst(trending.slice(0, 6))
+            setLast(trending.slice(12, 18))
+        }
 
     }
   }, [trending])
@@ -131,16 +139,14 @@ useEffect(()=>{
         <div onTransitionEnd={handleTransitionEnd}  ref={sliderRef} className='flex w-full gap-2 lg:w-[95%] translate-x-0 lg:translate-x-[-100%] overflow-x-scroll lg:overflow-visible' >
             {last.map((movie, index) => {
                 return (
-                    <div key={index} className=' h-[170px] cursor-pointer lg:h-[250px] lg:min-h-[250px] lg:w-[calc(100%/7-8px)] 2xl:w-[calc(100%/8-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
+                    <div key={index} className=' h-[170px] cursor-pointer lg:h-[250px] lg:min-h-[250px] lg:w-[calc(100%/6-8px)] xl:w-[calc(100%/7-8px)] 2xl:w-[calc(100%/8-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
                         <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`group-hover:h-[45%]  rounded-[5px] h-full w-full`}/>
                     </div>
                 )
             })}
             {trending.map((movie, index) => {
                 return (
-                        <Link to={`/MovieDetail/${movie.id}`} key={index} onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={handleMouseLeave} className={`group  ${isHovered && movie.id===hoveredMovieId ? 'lg:hover:scale-x-[1.8] lg:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white  cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] w-[110px] lg:w-[calc(100%/7-8px)] 2xl:w-[calc(100%/8-8px)] flex-shrink-0 rounded-[5px] ${index%7 === 0 ? "origin-left" : ''} ${index%7  === 6 && index!==0 ? "origin-right" : ''}`} >
-                       
-
+                        <Link to={`/MovieDetail/${movie.id}`} key={index} onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={handleMouseLeave} className={`group  ${isHovered && movie.id===hoveredMovieId ? 'lg:hover:scale-x-[1.8] lg:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white  cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] w-[110px] lg:w-[calc(100%/6-8px)] xl:w-[calc(100%/7-8px)] 2xl:w-[calc(100%/8-8px)] flex-shrink-0 rounded-[5px] ${index%6===0?'origin-left':''} ${index%7 === 0 ? "xl:origin-left" : ''} ${index%8 === 0 ? "2xl:origin-left" : ''} ${index%6  === 5 && index!==0 ? "lg:origin-right" : ''} ${index%7  === 6 && index!==0 ? "xl:origin-right" : ''} ${index%8  === 7 && index!==0 ? "2xl:origin-right" : ''}`} >
 
                                 <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${isHovered && movie.id===hoveredMovieId?'lg:hidden  ':''}    `}/>
                                 <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] ${isHovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%] hidden  lg:flex ':'hidden'} `}/>
@@ -192,7 +198,7 @@ useEffect(()=>{
             })}
             {first.map((movie, index) => {
                 return (
-                    <div key={index} className=' h-[170px] lg:h-[250px] cursor-pointer lg:min-h-[250px] lg:w-[calc(100%/7-8px)] 2xl:w-[calc(100%/8-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
+                    <div key={index} className=' h-[170px] lg:h-[250px] cursor-pointer lg:min-h-[250px] lg:w-[calc(100%/6-8px)] xl:w-[calc(100%/7-8px)] 2xl:w-[calc(100%/8-8px)] flex-shrink-0 rounded-[5px] hidden lg:flex' >
                         <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`group-hover:h-[45%]  rounded-[5px] h-full w-full`}/>
                     </div>
                 )

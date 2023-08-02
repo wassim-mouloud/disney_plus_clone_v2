@@ -88,16 +88,19 @@ function Search() {
                                     to={`${index < content.length/2  || inputRef.current.value===''?`/MovieDetail/${movie.id}`:`/SeriesDetail/${movie.id}`}`}
                                     key={index}
                                     layout
-                                    className={`group fade h-[220px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-300 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.9] lg:hover:scale-y-[1.3] lg:hover:z-[99]':''} ${index%6===0?'origin-left':''} `}
+                                    className={`group fade h-[220px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-300 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.7] lg:hover:scale-y-[1.4] lg:hover:z-[99]':''} ${index%6===0?'lg:origin-left':''} ${index%6===5 && index!==0? 'lg:origin-right':''} `}
                                     onMouseEnter={()=>handleMouseEnter(movie.id)}
                                     onMouseLeave={handleMouseLeave}>
-                                    <img
+                                    {/* <img
                                         loading='lazy'
                                         onLoad={()=>setIsLoading(false)}
                                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                         alt=""
                                         className={`${isLoading?'skeleton':''} rounded-t-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%]  lg:group-hover:object-cover lg:group-hover:object-top':''} `}
-                                    />
+                                    /> */}
+                                    <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:hidden':''}    `}/>
+                                    <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] ${hovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%] hidden lg:flex ':'hidden'} `}/>
+                                    
                                     <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
                                         <div className='flex gap-2 w-[95%]' >
                                             <button

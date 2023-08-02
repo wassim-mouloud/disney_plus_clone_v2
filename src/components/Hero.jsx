@@ -257,8 +257,6 @@ function Hero({ frontMovies }) {
             <div className='flex justify-center lg:justify-start lg:ml-[100px] w-screen mt-7 lg:absolute bottom-4 z-[90]' >
                 <div className='w-[95vw] lg:w-[90vw] flex justify-between gap-1 lg:gap-2 flex-wrap lg:flex-nowrap' >
                         {viewers.map((viewer, index) => {
-                      
-
                             return (
                                 <div 
                                     className={`bg-[#1b1d25] flex justify-center items-center group cursor-pointer w-[calc(95vw/3-4px)] lg:w-[calc(90vw/6-8px)] h-[75px] lg:h-[120px] rounded-[5px]  lg:hover:scale-[1.15]  duration-300 transition-transform lg:hover:z-[99] `}
@@ -269,7 +267,7 @@ function Hero({ frontMovies }) {
                                     <video 
                                 
                                     src={`./videos/viewer${index}.mp4`}  
-                                    autoPlay
+                                    autoPlay={window.innerWidth > 1024 ? true : false}
                                     muted 
                                     loop 
                                     className='hidden lg:block rounded-[5px] object-cover w-full  h-full min-w-full min-h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100'

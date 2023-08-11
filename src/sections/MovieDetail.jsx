@@ -31,7 +31,7 @@ function MovieDetail() {
     <div>
         <Navbar/>
         <div className='w-screen relative h-[130vh] lg:h-[120vh] text-[#d9d9da]' >
-            <img src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`} alt="" className='h-[30vh] lg:h-[70vh] object-cover lg:object-top w-full rounded-lg' />
+            <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="" className='h-[30vh] lg:h-[70vh] object-cover lg:object-top w-full rounded-lg' />
             <div 
                     className="absolute inset-0 w-screen  lg:h-[70vh] hidden lg:block" 
                     style={{ backgroundImage: 'linear-gradient(to bottom, transparent, #0f1013)' }}

@@ -88,7 +88,7 @@ function Search() {
                                     to={`${index < content.length/2  || inputRef.current.value===''?`/MovieDetail/${movie.id}`:`/SeriesDetail/${movie.id}`}`}
                                     key={index}
                                     layout
-                                    className={`group fade h-[220px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-300 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.7] lg:hover:scale-y-[1.4] lg:hover:z-[99]':''} ${index%6===0?'lg:origin-left':''} ${index%6===5 && index!==0? 'lg:origin-right':''} `}
+                                    className={`group fade h-[220px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-500 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.7] lg:hover:scale-y-[1.4] lg:hover:z-[99]':''} ${index%6===0?'lg:origin-left':''} ${index%6===5 && index!==0? 'lg:origin-right':''} `}
                                     onMouseEnter={()=>handleMouseEnter(movie.id)}
                                     onMouseLeave={handleMouseLeave}>
                                     {/* <img

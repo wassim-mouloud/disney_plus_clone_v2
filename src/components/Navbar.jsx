@@ -32,10 +32,10 @@ function Navbar() {
                 {['Home', 'Search', "Movies", "Series"].map((item, i) => {
                     return(
                         <Link                                
-                        key={i} to={`${item!=='Home'?`/${item}`:'/'}`} className='ml-[50px] lg:ml-0 last:ml-0'> 
+                        key={i} to={`${item!=='Home'?`/${item}`:'/'}`} className='ml-[50px] last:ml-0 lg:ml-0 last:sm:ml-[50px] last:lg:ml-0'> 
                             
                             <div
-                                className={`${(item!=='Home' && pathname === `/${item}`) || (item==='Home' && pathname==='/') ? 'text-white' : 'text-[#C3C3C3]'} hover:text-white lg:hover:scale-[1.15] transition-transform duration-300 ${item==="Movies" || item==="Series"?"hidden  lg:flex" :'' } lg:ml-[10px] cursor-pointer h-[50px] flex flex-col gap-3 lg:flex-row items-center flex-shrink-0`}
+                                className={`${(item!=='Home' && pathname === `/${item}`) || (item==='Home' && pathname==='/') ? 'text-white' : 'text-[#C3C3C3]'} hover:text-white lg:hover:scale-[1.15] transition-transform duration-300 ${item==="Movies" || item==="Series"?"hidden  sm:flex" :'' } lg:ml-[10px] cursor-pointer h-[50px] flex flex-col gap-3 lg:flex-row items-center flex-shrink-0`}
                             >
                                 <img
                                     src={`/images/${(item!=='Home' && pathname === `/${item}`) || (item==='Home' && pathname==='/') ? "white_" + item.toLowerCase() + ".png" : "gray_" + item.toLowerCase() + ".png"}`}

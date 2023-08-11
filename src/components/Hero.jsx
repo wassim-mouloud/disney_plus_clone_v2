@@ -11,9 +11,25 @@ function Hero({ frontMovies }) {
     const sliderRef= useRef(null)
     const viewers=[0,1,2,3,4,5]
     const [trailers, setTrailers]= useState([])
-    const dupLast=[12,13,14,15,16,17]
-    const dupFirst=[0,1,2,3,4,5]
+    const [dupFirst, setDupFirst]= useState([])
+    const [dupLast, setDupLast]= useState([])
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+    useEffect(() => {
+        if (frontMovies.length > 0) {
+            if(window.innerWidth>=1536){
+                setDupFirst([0,1,2,3,4,5,6])
+                setDupLast([11,12,13,14,15,16,17])
+            }else if(window.innerWidth>=1280){
+                setDupFirst([0,1,2,3,4,5,6])
+                setDupLast([11,12,13,14,15,16,17])
+            }else if (window.innerWidth>=1024){
+                setDupFirst([0,1,2,3])
+                setDupLast([14,15,16,17])
+            }
+    
+        }
+      }, [frontMovies])
 
     
 
@@ -190,16 +206,16 @@ function Hero({ frontMovies }) {
                             </div>
                         </div>
 
-                        <div className='relative w-[640px]  z-[90]  flex-shrink-0  hidden lg:flex  items-end justify-center overflow-x-hidden py-3 px-[30px]' >
-                            <div ref={sliderRef}  className={`flex w-[580px] min-w-[580px] gap-2 slider  flex-shrink-0 `} >
+                        <div className='relative lg:w-[420px] xl:w-[640px]  z-[90]  flex-shrink-0  hidden lg:flex  items-end justify-center overflow-x-hidden py-3 px-[30px]' >
+                            <div ref={sliderRef}  className={`flex lg:w-[370px] xl:w-[580px] lg:min-w-[370px] xl:min-w-[580px] gap-2 slider  flex-shrink-0 `} >
                                 {dupLast.map(n=>{
                                      return (
                                         <div 
                                             key={n}
                                             onClick={()=>setIndex(n)} 
-                                            className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
+                                            className={`overflow-hidden flex-shrink-0 lg:w-[calc(370px/4-8px)] xl:w-[calc(580px/6-8px)] rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
-                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/w300${frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
+                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/w300${frontMovies[n] && frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
                                         </div>
                                     )
                                 })}
@@ -208,9 +224,9 @@ function Hero({ frontMovies }) {
                                         <div 
                                             key={n}
                                             onClick={()=>setIndex(n)} 
-                                            className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
+                                            className={`overflow-hidden  flex-shrink-0 lg:w-[calc(370px/4-8px)] xl:w-[calc(580px/6-8px)] rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
-                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/w300${frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
+                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/w300${frontMovies[n] && frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
                                         </div>
                                     )
                                 })}
@@ -219,9 +235,9 @@ function Hero({ frontMovies }) {
                                         <div 
                                             key={n}
                                             onClick={()=>setIndex(n)} 
-                                            className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
+                                            className={`overflow-hidden flex-shrink-0 lg:w-[calc(370px/4-8px)] xl:w-[calc(580px/6-8px)] rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
-                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/w300${frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
+                                            <img loading='lazy' src={`https://image.tmdb.org/t/p/w300${frontMovies[n] && frontMovies[n].backdrop_path}`} alt="" className={`h-full w-full `} />
                                         </div>
                                     )
                                 })}
@@ -245,7 +261,7 @@ function Hero({ frontMovies }) {
 
                     <img 
                         key={frontMovies[index].backdrop_path} 
-                        src={`https://image.tmdb.org/t/p/original${frontMovies[index].backdrop_path}`} 
+                        src={`https://image.tmdb.org/t/p/original${frontMovies[index]?.backdrop_path}`} 
                         alt="" 
                         className='relative object-cover w-full h-[45vh] lg:h-full fade-in'
                         loading='lazy'

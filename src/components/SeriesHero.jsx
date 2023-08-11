@@ -164,13 +164,13 @@ function Hero({ frontSeries }) {
                             </div>
                         </div>
 
-                        <div className='relative w-[640px]  z-[90]  flex-shrink-0  hidden lg:flex  items-end justify-center overflow-x-hidden py-3 px-[30px]' >
-                            <div ref={sliderRef}  className={`flex w-[580px] min-w-[580px] gap-2 slider  flex-shrink-0 `} >
+                        <div className='relative lg:w-[420px] xl:w-[640px]  z-[90]  flex-shrink-0  hidden lg:flex  items-end justify-center overflow-x-hidden py-3 px-[30px]' >
+                            <div ref={sliderRef}  className={`flex lg:w-[370px] xl:w-[580px] min-w-[580px] gap-2 slider  flex-shrink-0 `} >
                                 {dupLast.map(n=>{
                                      return (
                                         <div 
                                             onClick={()=>setIndex(n)} 
-                                            className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
+                                            className={`overflow-hidden flex-shrink-0 lg:w-[calc(370px/4-8px)] xl:w-[calc(580px/6-8px)] rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
                                             <img src={`https://image.tmdb.org/t/p/original${frontSeries[n].backdrop_path}`} alt="" className={`h-full w-full `} />
                                         </div>
@@ -180,7 +180,7 @@ function Hero({ frontSeries }) {
                                     return (
                                         <div 
                                             onClick={()=>setIndex(n)} 
-                                            className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
+                                            className={`overflow-hidden flex-shrink-0 lg:w-[calc(370px/4-8px)] xl:w-[calc(580px/6-8px)] rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
                                             <img src={`https://image.tmdb.org/t/p/original${frontSeries[n].backdrop_path}`} alt="" className={`h-full w-full `} />
                                         </div>
@@ -190,7 +190,7 @@ function Hero({ frontSeries }) {
                                      return (
                                         <div 
                                             onClick={()=>setIndex(n)} 
-                                            className={`overflow-hidden flex-shrink-0 calc-child-slider rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
+                                            className={`overflow-hidden flex-shrink-0 lg:w-[calc(370px/4-8px)] xl:w-[calc(580px/6-8px)] rounded-[5px] hover:scale-110  transition-all  duration-150 cursor-pointer border-transparent hover:border-white border-[1px] ${index===n?"border-white":''}`} >
 
                                             <img src={`https://image.tmdb.org/t/p/original${frontSeries[n].backdrop_path}`} alt="" className={`h-full w-full `} />
                                         </div>

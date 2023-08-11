@@ -5,7 +5,12 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-   
+
+}
+@media (max-width: 768px) {
+    * {
+        overflow-x: hidden;
+    }
 }
 a{
     margin: 0;
@@ -58,9 +63,17 @@ body{
       }
 }
 
-.calc-child-slider{
-    width: calc(580px / 6 - 8px )
+@media screen and (min-width: 1024px) {
+    .calc-child-slider {
+        width: calc(370px / 4 - 8px);
+    }
 }
+@media screen and (min-width: 1280px) {
+    .calc-child-slider {
+        width: calc(580px / 6 - 8px);
+    }
+}
+
 
 .rotatey{
     transform: rotateY(180deg);

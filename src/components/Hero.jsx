@@ -5,8 +5,7 @@ function Hero({ frontMovies }) {
     const [index, setIndex] = useState(0);
     const scrollDots = useRef(null);
     const [slider, setSlider] = useState([
-        0,1,2,3,4,5,6,7,8,9,
-        10,11,12,13,14,15,16,17
+
     ]);
     const sliderRef= useRef(null)
     const viewers=[0,1,2,3,4,5]
@@ -70,7 +69,7 @@ function Hero({ frontMovies }) {
                     sliderRef.current.style.setProperty("--slider-index", sliderIndex-1);
                     await sleep(500);
                     sliderRef.current.style.transition='none';
-                    sliderRef.current.style.setProperty("--slider-index", window.length>=1280?3:4);
+                    sliderRef.current.style.setProperty("--slider-index", window.innerWidth>=1280?3:4);
                 }else{
                     sliderRef.current.style.transition='transform 0.5s linear';
                     sliderRef.current.style.setProperty("--slider-index", sliderIndex-1);
@@ -81,43 +80,44 @@ function Hero({ frontMovies }) {
         }
 
     }
-    
-    const handleNext= async ()=> {
+
+    const handleNext = async () => {
         try{
             if(sliderRef.current){
-                const sliderIndex=parseInt(getComputedStyle(sliderRef.current).getPropertyValue("--slider-index"))
-                if(window.length>=1280){
+                const sliderIndex = parseInt(getComputedStyle(sliderRef.current).getPropertyValue("--slider-index"));
+                if(window.innerWidth>=1280){
+
                     if(sliderIndex===3){
-                        sliderRef.current.style.transition='transform 0.5s linear'
+                        sliderRef.current.style.transition='transform 0.5s linear';
                         sliderRef.current.style.setProperty("--slider-index", sliderIndex+1);
-                        await sleep(500)
-                        sliderRef.current.style.transition='none'
+                        await sleep(500);
+                        sliderRef.current.style.transition='none';
                         sliderRef.current.style.setProperty("--slider-index", 1);
                     }else{
-                        if(sliderIndex===4){
-                            sliderRef.current.style.transition='transform 0.5s linear'
-                            sliderRef.current.style.setProperty("--slider-index", sliderIndex+1);
-                            await sleep(500)
-                            sliderRef.current.style.transition='none'
-                            sliderRef.current.style.setProperty("--slider-index", 1);
-                        }
+                        sliderRef.current.style.transition='transform 0.5s linear';
+                        sliderRef.current.style.setProperty("--slider-index", sliderIndex+1);
                     }
-                    
-                }
-            else{
-                    sliderRef.current.style.transition='transform 0.5s linear'
-                    sliderRef.current.style.setProperty("--slider-index", sliderIndex+1);
+                }else if(window.innerWidth>=1024){
+
+                    if(sliderIndex===4){
+                        sliderRef.current.style.transition='transform 0.5s linear';
+                        sliderRef.current.style.setProperty("--slider-index", sliderIndex+1);
+                        await sleep(500);
+                        sliderRef.current.style.transition='none';
+                        sliderRef.current.style.setProperty("--slider-index", 1);
+                    }else{
+                        sliderRef.current.style.transition='transform 0.5s linear';
+                        sliderRef.current.style.setProperty("--slider-index", sliderIndex+1);
+                    }
                 }
             }
         }catch(e){
             console.log(e)
         }
+
     }
+    
 
-
-  
-  
-  
 
     useEffect(() => {
         if(sliderRef.current) { 

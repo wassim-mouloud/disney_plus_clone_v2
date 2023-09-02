@@ -70,12 +70,12 @@ function SeriesSlider({ trending }) {
           sliderRef.current.style.transform = 'translateX(' + (-size * newIndex) + 'px)';
       }
   }
-
-  const handleMouseEnter = async (id) => {
-    setHoveredMovieId(id)
-    await sleep(500)
-    setIsHovered(true)
-}
+  
+  const handleMouseEnter = (id) => {
+    setHoveredMovieId(id);
+    sleep(500).then(() => setIsHovered(true));
+  };
+  
 
 const handleMouseLeave = () => {
     setHoveredMovieId(null)

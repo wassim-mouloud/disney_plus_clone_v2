@@ -75,9 +75,9 @@ function Search() {
         <div className='relative'>
             <Navbar/>
             <div className='w-screen' >
-                <div className='w-[90%] lg:w-[80%] flex items-center gap-2 bg-[#262833] mt-5 mx-auto rounded-[7px] p-4' >
-                    <img loading='lazy' src="/images/search.png" alt="" className='w-6 h-6 lg:w-8 lg:h-8' />
-                    <input ref={inputRef} onChange={handleChange} type="text" placeholder='Movies, shows and more' className='w-[100%] h-[40px] rounded-[7px] bg-[#262833] outline-none text-white text-[14px] lg:text-[18px]'/>
+                <div className='w-[90%] lg:w-[80%] h-[55px] lg:h-[65px] overflow-y-hidden flex items-center gap-2 bg-[#262833] mt-5 mx-auto rounded-[7px] p-4' >
+                    <img loading='lazy' src="/images/search.png" alt="" className='w-4 h-4 lg:w-8 lg:h-8' />
+                    <input ref={inputRef} onChange={handleChange} type="text" placeholder='Movies, shows and more' className='w-[100%] h-[40px] rounded-[7px] bg-[#262833] outline-none text-white text-[16px] lg:text-[18px]'/>
                 </div>
                 <p className='text-white w-[90%] lg:w-[80%] mx-auto text-[20px] font-semibold py-4' >{title}</p>
 

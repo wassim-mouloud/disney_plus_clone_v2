@@ -41,7 +41,7 @@ function SeriesSlider({ trending }) {
       if(index >= 4) return
       let size = sliderRef.current.offsetWidth;
       let newIndex = index + 1;
-      sliderRef.current.style.transition = 'transform 0.2s linear';
+      sliderRef.current.style.transition = 'transform 0.6s linear';
       setIndex(newIndex);
       sliderRef.current.style.transform = 'translateX(' + (-size * newIndex) + 'px)';
   }
@@ -50,7 +50,7 @@ function SeriesSlider({ trending }) {
       if(index <= 0) return
       let size = sliderRef.current.offsetWidth;
       let newIndex = index - 1;
-      sliderRef.current.style.transition = 'transform 0.2s linear';
+      sliderRef.current.style.transition = 'transform 0.6s linear';
       setIndex(newIndex);
       sliderRef.current.style.transform = 'translateX(' + (-size * newIndex) + 'px)';
   }

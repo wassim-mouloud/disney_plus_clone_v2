@@ -68,9 +68,10 @@ function MainSlider({ trending, title }) {
       }
   }
 
-  const handleMouseEnter = (id) => {
+  const handleMouseEnter = async (id) => {
     setHoveredMovieId(id);
-    sleep(500).then(() => setIsHovered(true));
+    await sleep(500)
+    setIsHovered(true)
   };
   
 

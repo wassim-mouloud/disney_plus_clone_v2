@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { movie_genres, tv_genres } from '../utils/genres'
 import { Link } from 'react-router-dom'
 import '../App.css'
+import { db } from '../config/firebase'
+import {addDoc , collection , getDocs} from 'firebase/firestore'
+
 function SeriesSlider({ trending }) {
     
   const sliderRef = useRef(null)
@@ -11,6 +14,8 @@ function SeriesSlider({ trending }) {
   const [hoveredMovieId, setHoveredMovieId] = useState(null)
   const [isHovered, setIsHovered]= useState(false)
   const [trailers, setTrailers]= useState([])
+  const watchlistSeriesCollectionRef = collection(db, 'watchlist_series')
+
 
  
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -119,6 +124,12 @@ useEffect(()=>{
   
 }, [trending])
 
+const addToWatchlist = async (e, movie) => {
+    e.preventDefault()
+    e.stopPropagation();
+    await addDoc(watchlistSeriesCollectionRef, {backdrop_path:movie.backdrop_path, poster_path:movie.poster_path, genre_ids:movie.genre_ids, name:movie.name, overview:movie.overview, first_air_date:movie.first_air_date, vote_average: movie.vote_average})
+}
+
   return (
     <div className='z-[90] py-2 relative w-screen  mt-3  lg:w-[calc(100vw-100px)] overflow-x-clip'>
         <div onClick={handlePrev} className=' cursor-pointer h-full w-[50px] hidden lg:flex opacity-0 hover:opacity-100 transition-opacity duration-500 justify-center items-center absolute left-0 top-0 z-[99]' style={{ backgroundImage: 'linear-gradient(to left, transparent, #0f1013)' }} >
@@ -153,10 +164,7 @@ useEffect(()=>{
                                             </button>
                                         </div>
                                         <button 
-                                            onClick={(e) => {
-                                                e.preventDefault()
-                                                e.stopPropagation();
-                                            }}
+                                            onClick={(e)=> addToWatchlist(e, movie)}
                                             className='lg:hover:scale-105 transition-all duration-300 text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white' >+
                                         </button>                                     </div>
                                     <p className='font-semibold text-[10px] text-[#d9d9da] py-1' >{movie?.name}</p>

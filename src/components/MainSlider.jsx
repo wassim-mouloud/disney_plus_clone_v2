@@ -3,6 +3,8 @@ import { movie_genres } from '../utils/genres'
 import lexrank from 'lexrank.js'
 import {Link} from 'react-router-dom'
 import '../App.css'
+import { db } from '../config/firebase'
+import {addDoc , collection , getDocs} from 'firebase/firestore'
 
 function MainSlider({ trending, title }) {
     
@@ -14,6 +16,7 @@ function MainSlider({ trending, title }) {
   const [isHovered, setIsHovered]= useState(false)
   const [summaries, setSummaries]= useState([])
   const [trailers, setTrailers]= useState([])
+  const watchlistMoviesCollectionRef = collection(db, 'watchlist_movies')
 
 
   const sleep= ms=> new Promise(resolve => setTimeout(resolve, ms))
@@ -130,6 +133,12 @@ useEffect(()=>{
       
   
 }, [trending])
+
+const addToWatchlist = async (e, movie) => {
+    e.preventDefault()
+    e.stopPropagation();
+    await addDoc(watchlistMoviesCollectionRef, {backdrop_path:movie.backdrop_path, poster_path:movie.poster_path, genre_ids:movie.genre_ids, original_title:movie.original_title, overview:movie.overview, release_date:movie.release_date, vote_average: movie.vote_average})
+}
   
 
 
@@ -148,6 +157,7 @@ useEffect(()=>{
             })}
             {trending.map((movie, index) => {
                 return (
+                    
                         <Link to={`/MovieDetail/${movie.id}`} key={index} onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={()=>handleMouseLeave()} className={`group  ${isHovered && movie.id===hoveredMovieId ? 'lg:hover:scale-x-[2] lg:hover:scale-y-[1.4] xl:hover:scale-x-[1.8] xl:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white  cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] w-[110px] lg:w-[calc(100%/6-8px)] xl:w-[calc(100%/7-8px)] 2xl:w-[calc(100%/8-8px)] flex-shrink-0 rounded-[5px] ${index%6===0 && window.innerWidth<1280 ?'origin-left':''} ${index%7 === 0 && window.innerWidth<1536 ? "xl:origin-left" : ''} ${index%8 === 0 ? "2xl:origin-left" : ''} ${index%6  === 5 && index!==0 &&  window.innerWidth<1280 ? "lg:origin-right" : ''} ${index%7  === 6 && index!==0 &&  window.innerWidth<1536 ? "xl:origin-right" : ''} ${index%8  === 7 && index!==0 ? "2xl:origin-right" : ''}`} >
 
                                 <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${isHovered && movie.id===hoveredMovieId?'lg:hidden  ':''}    `}/>
@@ -168,7 +178,10 @@ useEffect(()=>{
                                                 <span className='font-medium text-[#16181f]' >Watch Now</span>
                                             </button>
                                         </div>
-                                        <button className='lg:hover:scale-105 transition-all duration-300 text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white' >+</button>
+                                        <button 
+                                            onClick={(e)=> addToWatchlist(e, movie)}
+                                            className='lg:hover:scale-105 transition-all duration-300 text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white' >+
+                                        </button>
                                     </div>
                                     <p className='font-semibold text-[10px] text-[#d9d9da] py-1 ' >{movie.original_title}</p>
                             

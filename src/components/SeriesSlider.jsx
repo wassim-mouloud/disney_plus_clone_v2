@@ -152,8 +152,13 @@ useEffect(()=>{
                                                 <span className='font-medium text-[#16181f]' >Watch Now</span>
                                             </button>
                                         </div>
-                                        <button className='lg:hover:scale-105 transition-all duration-300 text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white' >+</button>
-                                    </div>
+                                        <button 
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                e.stopPropagation();
+                                            }}
+                                            className='lg:hover:scale-105 transition-all duration-300 text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white' >+
+                                        </button>                                     </div>
                                     <p className='font-semibold text-[10px] text-[#d9d9da] py-1' >{movie?.name}</p>
                             
                                     <div className='w-[95%] flex flex-col  gap-1' >

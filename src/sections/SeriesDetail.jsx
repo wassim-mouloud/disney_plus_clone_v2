@@ -27,9 +27,9 @@ function SeriesDetail() {
     <div>
         <Navbar/>
         <div className='w-screen h-[130vh] lg:h-[120vh] relative text-[#d9d9da]' >
-            <img src={`https://image.tmdb.org/t/p/original${show.backdrop_path}`} alt="" className='h-[30vh] lg:h-[70vh] object-cover lg:object-top w-full rounded-lg' />
+            <img src={`https://image.tmdb.org/t/p/original${show.backdrop_path}`} alt="" className='h-[30vh] lg:h-[600px] object-cover lg:object-top w-full rounded-lg' />
             <div 
-                    className="absolute inset-0 w-screen lg:h-[70vh] hidden lg:block" 
+                    className="absolute inset-0 w-screen lg:h-[600px] hidden lg:block" 
                     style={{ backgroundImage: 'linear-gradient(to bottom, transparent, #0f1013)' }}
             >
             </div>

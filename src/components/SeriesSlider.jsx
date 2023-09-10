@@ -127,7 +127,7 @@ useEffect(()=>{
 const addToWatchlist = async (e, movie) => {
     e.preventDefault()
     e.stopPropagation();
-    await addDoc(watchlistSeriesCollectionRef, {backdrop_path:movie.backdrop_path, poster_path:movie.poster_path, genre_ids:movie.genre_ids, name:movie.name, overview:movie.overview, first_air_date:movie.first_air_date, vote_average: movie.vote_average})
+    await addDoc(watchlistSeriesCollectionRef, {backdrop_path:movie.backdrop_path, poster_path:movie.poster_path, genre_ids:movie.genre_ids, name:movie.name, overview:movie.overview, first_air_date:movie.first_air_date, vote_average: movie.vote_average, series_id: movie.id})
 }
 
   return (

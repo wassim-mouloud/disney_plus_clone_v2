@@ -81,27 +81,20 @@ function Search() {
                 </div>
                 <p className='text-white w-[90%] lg:w-[80%] mx-auto text-[20px] font-semibold py-4' >{title}</p>
 
-                <div layout className='w-[90%] lg:w-[80%] grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-7 gap-2  mx-auto mb-[120px] lg:mb-0' >
+                <div  className='w-[90%] lg:w-[80%] grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-7 gap-2  mx-auto mb-[120px] lg:mb-0' >
                     {content.map((movie, index) => 
                         movie.poster_path ? (
                                 <Link
                                     to={`${index < content.length/2  || inputRef.current.value===''?`/MovieDetail/${movie.id}`:`/SeriesDetail/${movie.id}`}`}
                                     key={index}
                                     layout
-                                    className={`group fade h-[220px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-500 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.7] lg:hover:scale-y-[1.4] lg:hover:z-[99]':''} ${index%6===0?'lg:origin-left':''} ${index%6===5 && index!==0? 'lg:origin-right':''} `}
+                                    className={`group relative fade h-[220px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-500 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.7] lg:hover:scale-y-[1.4] lg:hover:z-[99]':''} ${index%6===0?'lg:origin-left':''} ${index%6===5 && index!==0? 'lg:origin-right':''} `}
                                     onMouseEnter={()=>handleMouseEnter(movie.id)}
                                     onMouseLeave={handleMouseLeave}>
-                                    {/* <img
-                                        loading='lazy'
-                                        onLoad={()=>setIsLoading(false)}
-                                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                        alt=""
-                                        className={`${isLoading?'skeleton':''} rounded-t-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%]  lg:group-hover:object-cover lg:group-hover:object-top':''} `}
-                                    /> */}
                                     <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:hidden':''}    `}/>
-                                    <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] ${hovered && movie.id===hoveredMovieId?'lg:group-hover:h-[40%] hidden lg:flex ':'hidden'} `}/>
+                                    <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] h-[40%] absolute top-0 opacity-0 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:opacity-100   lg:flex ':''} `}/>
                                     
-                                    <div className={`flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
+                                    <div className={`lg:mt-[50%] flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
                                         <div className='flex gap-2 w-[95%]' >
                                             <button
                                             onClick={(e) => {

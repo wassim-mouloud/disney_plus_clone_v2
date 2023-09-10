@@ -134,3 +134,7 @@ body{
         background-color:hsl(227, 17%, 10%) ;
     }
 }
+
+.hide{
+    display: none;
+}

@@ -149,7 +149,7 @@ const addToWatchlist = async (e, movie) => {
 
                                 <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${isHovered && movie.id===hoveredMovieId?'lg:hidden':''}    `}/>
                                 <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] h-[40%] absolute top-0 opacity-0 ${isHovered && movie.id===hoveredMovieId?'lg:group-hover:opacity-100   lg:flex ':''} `}/>
-                                <div className={`lg:mt-[55%] flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${isHovered && movie?.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
+                                <div className={`lg:mt-[60%] flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${isHovered && movie?.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
                                     <div className='flex gap-2 2xl:gap-5 w-[95%]' >
                                         <div className='h-[30px] w-[135px]' to={`https://www.youtube.com/watch?v=${trailers[index]}`} target="_blank" rel="noopener noreferrer">
                                             <button 

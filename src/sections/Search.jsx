@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { movie_genres,tv_genres } from '../utils/genres';
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar';
-import {Link, useNavigate} from 'react-router-dom'
+import SearchCard from '../components/SearchCard'
 import '../App.css'
-import {motion} from 'framer-motion'
 
-function Search() {
+
+function Search({setWatchlistMovies, setWatchlistSeries}) {
     const [popular, setPopular]= useState([]);
     const [content, setContent]= useState([]);
     const [hoveredMovieId, setHoveredMovieId] = useState(null);
@@ -32,17 +31,6 @@ function Search() {
     }, []);
     
     useEffect(() => setContent(popular), [popular]);
-
-    const handleMouseEnter = async (id) => {
-        setHoveredMovieId(id)
-        await sleep(500)
-        setHovered(true)
-    }
-  
-    const handleMouseLeave = () => {
-        setHoveredMovieId(null)
-        setHovered(false)
-    }
 
     const handleChange = async (e) => {
         const word = e.target.value;
@@ -74,67 +62,16 @@ function Search() {
     return (
         <div className='relative'>
             <Navbar/>
-            <div className='w-screen' >
-                <div className='w-[90%] lg:w-[80%] h-[55px] lg:h-[65px] overflow-y-hidden flex items-center gap-2 bg-[#262833] mt-5 mx-auto rounded-[7px] p-4' >
+            <div className='w-screen ' >
+                <div className='w-[90%] lg:w-[calc(100vw-100px)] xl:w-[calc(100vw-140px)] h-[55px] lg:h-[65px] overflow-y-hidden flex items-center gap-2 bg-[#262833] mt-5  rounded-[7px] m-6 lg:m-8 lg:ml-[100px] p-4 ' >
                     <img loading='lazy' src="/images/search.png" alt="" className='w-4 h-4 lg:w-8 lg:h-8' />
                     <input ref={inputRef} onChange={handleChange} type="text" placeholder='Movies, shows and more' className='w-[100%] h-[40px] rounded-[7px] bg-[#262833] outline-none text-white text-[16px] lg:text-[18px]'/>
                 </div>
-                <p className='text-white w-[90%] lg:w-[80%] mx-auto text-[20px] font-semibold py-4' >{title}</p>
-
-                <div  className='w-[90%] lg:w-[80%] grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-7 gap-2  mx-auto mb-[120px] lg:mb-0' >
+                <p className='text-white  text-[20px] lg:text-[24px] font-semibold  px-6 py-3 lg:p-3 lg:pl-[100px]' >{title}</p>
+                <div  className='w-screen lg:w-[calc(100vw-100px)] xl:w-[calc(100vw-140px)] grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-2  mb-[120px] lg:mb-0 p-6 lg:p-0 lg:m-8 lg:ml-[100px] ' >
                     {content.map((movie, index) => 
                         movie.poster_path ? (
-                                <Link
-                                    to={`${index < content.length/2  || inputRef.current.value===''?`/MovieDetail/${movie.id}`:`/SeriesDetail/${movie.id}`}`}
-                                    key={index}
-                                    layout
-                                    className={`group relative fade h-[220px] md:h-[220px] lg:h-[245px]  rounded-[7px] bg-[#16181f] cursor-pointer transition-transform duration-500 ${hovered && movie.id===hoveredMovieId?'lg:hover:scale-x-[1.7] lg:hover:scale-y-[1.4] lg:hover:z-[99]':''} ${index%6===0?'lg:origin-left':''} ${index%6===5 && index!==0? 'lg:origin-right':''} `}
-                                    onMouseEnter={()=>handleMouseEnter(movie.id)}
-                                    onMouseLeave={handleMouseLeave}>
-                                    <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:hidden':''}    `}/>
-                                    <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] h-[40%] absolute top-0 opacity-0 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:opacity-100   lg:flex ':''} `}/>
-                                    
-                                    <div className={`lg:mt-[50%] flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
-                                        <div className='flex gap-2 w-[95%]' >
-                                            <button
-                                            onClick={(e) => {
-                                                e.preventDefault()
-                                                e.stopPropagation();
-                                                window.open(`https://www.youtube.com/watch?v=rcBntNCD4ZY`, '_blank');
-                                            }}
-                                            className='text-[8px] h-[30px] w-[135px] flex justify-center items-center gap-1 bg-[#d9d9da] rounded-[5px] lg:hover:scale-105 transition-all' >
-                                                <img loading='lazy' src="/images/dark-blue-play.png" alt="" className='w-2 h-2'/>
-                                                <span className='font-medium text-[#16181f]' >Watch Now</span>
-                                            </button>
-                                            <button className='text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white lg:hover:scale-105 transition-all ' >+</button>
-                                        </div>
-                                        <p className='font-bold text-[10px] text-[#d9d9da] py-1' >{index< content.length/2  || inputRef.current.value==='' ?movie.original_title:movie.original_name}</p>
-                                        <div className='w-[95%] flex flex-col gap-1' >
-                                            <div className='flex gap-1  items-center text-[8px] font-medium ' >
-                                            <span className='text-[#d9d9da] text-[8px]' >
-                                                {index < content.length/2 || inputRef.current.value===''
-                                                    ? (typeof(movie.release_date) === 'string' ? movie.release_date.slice(0, 4) : null)
-                                                    : (typeof(movie?.first_air_date) === 'string' ? movie.first_air_date.slice(0, 4) : null)
-                                                }
-                                            </span>
-                                                <span className='text-[#a2a3a5] text-[9px]' >•</span>
-                                                {movie.genre_ids.slice(0, 2).map(genre_id => {
-                                                    return (
-                                                        <div className='flex gap-1 text-[8px]'>
-                                                            <span className='text-[#d9d9da]'>{index<5 || inputRef.current.value==='' ?movie_genres[genre_id]:tv_genres[genre_id]}</span>
-                                                            <span className='text-[#a2a3a5]' >•</span>
-                                                        </div>
-                                                    )
-                                                })}
-                                                <div className='flex justify-center items-center text-[#d9d9da] gap-1' >
-                                                    <img loading='lazy' src="/images/star.png" alt="" className='w-2 h-2'/>
-                                                    <span className='text-[8px]' >{movie.vote_average && (movie.vote_average).toString().slice(0,3)}</span>
-                                                </div>
-                                            </div>
-                                            <p className='text-[#7c849b] text-[7px] flex-grow-0 flex-shrink-0 w-full' >{movie.overview.split(' ').slice(0,22).join(' ')}</p>
-                                        </div>
-                                    </div>
-                                </Link>
+                            <SearchCard movie={movie} index={index}  setWatchlistMovies={setWatchlistMovies} setWatchlistSeries={setWatchlistSeries} />
                         ) : null
                     )}
                 </div>

@@ -6,7 +6,7 @@ import { db } from '../config/firebase'
 import {deleteDoc, doc, getDocs, collection} from 'firebase/firestore'
 
 
-const WatchlistCard = ({movie, index, setMovies, setSeries}) => {
+const WatchlistCard = ({movie, index, setWatchlistMovies, setWatchlistSeries}) => {
 
     const [hovered, setHovered]= useState(false)
     const [hoveredMovieId, setHoveredMovieId] = useState(null);
@@ -39,7 +39,7 @@ const WatchlistCard = ({movie, index, setMovies, setSeries}) => {
                         id : doc.id
                     }
                 ) )
-                setMovies(filteredData)
+                setWatchlistMovies(filteredData)
             } catch(e){
                 console.error(e)
             }
@@ -61,7 +61,7 @@ const WatchlistCard = ({movie, index, setMovies, setSeries}) => {
                         id : doc.id
                     }
                 ) )
-                setSeries(filteredData)
+                setWatchlistSeries(filteredData)
             } catch(e){
                 console.error(e)
             }

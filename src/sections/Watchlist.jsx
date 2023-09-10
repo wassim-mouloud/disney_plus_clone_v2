@@ -4,13 +4,11 @@ import { getDocs, collection, deleteDoc } from 'firebase/firestore'
 import { db} from '../config/firebase'
 import WatchlistCard from '../components/WatchlistCard'
 
-function Watchlist() {
+function Watchlist({watchlistMovies, setWatchlistMovies, watchlistSeries, setWatchlistSeries, allWatchlist, setAllWatchlist}) {
 
     const movieCollectionRef = collection(db, 'watchlist_movies')
-    const [movies, setMovies] = useState([])
     const seriesCollectionRef = collection(db, 'watchlist_series')
-    const [series, setSeries] = useState([])
-    const [allWatchlist, setAllWatchlist] = useState([])
+
 
 
     useEffect(()=>{
@@ -23,7 +21,7 @@ function Watchlist() {
                         id : doc.id
                     }
                 ) )
-                setMovies(filteredData)
+                setWatchlistMovies(filteredData)
             } catch(e){
                 console.error(e)
             }
@@ -41,7 +39,7 @@ function Watchlist() {
                         id : doc.id
                     }
                 ) )
-                setSeries(filteredData)
+                setWatchlistSeries(filteredData)
             } catch(e){
                 console.error(e)
             }
@@ -50,8 +48,8 @@ function Watchlist() {
     }, [])
 
     useEffect(()=>{
-        setAllWatchlist([...movies, ...series])
-    }, [movies, series])
+        setAllWatchlist([...watchlistMovies, ...watchlistSeries])
+    }, [watchlistMovies, watchlistSeries])
 
 
 
@@ -59,11 +57,11 @@ function Watchlist() {
   return (
     <div>
         <Navbar/>
-        <p className='text-white  text-[20px] lg:text-[28px] font-bold p-6 lg:w-[80%] mx-auto mt-5' >My watchlist</p>
-        <div  className='w-screen lg:w-[80%] grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-7 gap-2 mx-auto mb-[120px] lg:mb-0 p-6' >
+        <p className='text-white  text-[20px] lg:text-[28px] font-bold p-6 lg:p-8 lg:pl-[100px]' >My watchlist</p>
+        <div  className='w-screen lg:w-[calc(100vw-100px)] xl:w-[calc(100vw-140px)] grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-2  mb-[120px] lg:mb-0 p-6 lg:p-8 lg:pl-[100px]' >
             {allWatchlist.map((movie, index)=>{
                 return(
-                    <WatchlistCard movie={movie} index={index} id={movie.id} setMovies={setMovies} setSeries={setSeries} />
+                    <WatchlistCard movie={movie} index={index}  setWatchlistMovies={setWatchlistMovies} setWatchlistSeries={setWatchlistSeries} />
                 )
             })}
         </div>

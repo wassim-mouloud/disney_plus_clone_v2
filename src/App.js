@@ -7,6 +7,7 @@ import Search from './sections/Search';
 import MovieDetail from './sections/MovieDetail';
 import SeriesDetail from './sections/SeriesDetail';
 import Login from './sections/Login';
+import Watchlist from './sections/Watchlist';
 function App() {
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/Login' element={<Login/>}></Route>
         <Route path='MovieDetail/:id' element={<MovieDetail/>}></Route>
         <Route path='SeriesDetail/:id' element={<SeriesDetail/>}></Route>
+        <Route path='/Watchlist' element={<Watchlist/>}></Route>        
       </Routes>
     </div>
   );

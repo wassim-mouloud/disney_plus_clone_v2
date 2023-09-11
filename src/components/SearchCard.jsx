@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { movie_genres,tv_genres } from '../utils/genres';
 import { db } from '../config/firebase'
-import {deleteDoc, doc, getDocs, collection} from 'firebase/firestore'
+import {deleteDoc, addDoc, doc, getDocs, collection} from 'firebase/firestore'
 
-function SearchCard({movie, index, setWatchlistMovies, setWatchlistSeries}) {
+function SearchCard({movie, index, setWatchlistMovies, setWatchlistSeries, allWatchlist, watchlistMovies, watchlistSeries}) {
 
     const [hovered, setHovered]= useState(false)
     const [hoveredMovieId, setHoveredMovieId] = useState(null);
@@ -24,49 +24,91 @@ function SearchCard({movie, index, setWatchlistMovies, setWatchlistSeries}) {
         setHovered(false)
     }
 
-    const deleteMovie = async (e, id) =>{
-        e.preventDefault()
-        e.stopPropagation();
-        const movieDoc = doc(db, "watchlist_movies", id)
-        await deleteDoc(movieDoc)
-        const getMovies = async ()=>{
-            try{
-                const data= await getDocs(movieCollectionRef)
-                const filteredData = data.docs.map((doc) => (
-                    {
-                        ...doc.data(),
-                        id : doc.id
-                    }
-                ) )
-                setWatchlistMovies(filteredData)
-            } catch(e){
-                console.error(e)
-            }
+
+
+    const checkExistence = (movie) => {
+        return 'release_date' in movie
+          ? watchlistMovies?.some((obj) => obj.movie_id == movie?.id)
+          : watchlistSeries?.some((obj) => obj.series_id == movie?.id);
+      };
+
+    const getMovies = async ()=>{
+        try{
+            const data= await getDocs(movieCollectionRef)
+            console.log(data.docs)
+            const filteredData = data.docs.map((doc) => (
+                {
+                    ...doc.data(),
+                    id : doc.id
+                }
+            ) )
+            setWatchlistMovies(filteredData)
+        } catch(e){
+            console.error(e)
         }
-        getMovies()
     }
 
-    const deleteSeries = async (e, id) => {
-        e.preventDefault()
-        e.stopPropagation();
+    const deleteMovie = async (id) =>{
+        const movieDoc = doc(db, "watchlist_movies", id)
+        await deleteDoc(movieDoc)
+        getMovies()
+    }
+    const getSeries = async ()=>{
+        try{
+            const data= await getDocs(seriesCollectionRef)
+            console.log(data.docs)
+            const filteredData = data.docs.map((doc) => (
+                {
+                    ...doc.data(),
+                    id : doc.id
+                }
+            ) )
+            setWatchlistSeries(filteredData)
+        } catch(e){
+            console.error(e)
+        }
+    }
+
+    const deleteSeries = async (id) => {
         const seriesDoc = doc(db, "watchlist_series", id)
         await deleteDoc(seriesDoc)
-        const getSeries = async ()=>{
-            try{
-                const data= await getDocs(seriesCollectionRef)
-                const filteredData = data.docs.map((doc) => (
-                    {
-                        ...doc.data(),
-                        id : doc.id
-                    }
-                ) )
-                setWatchlistSeries(filteredData)
-            } catch(e){
-                console.error(e)
-            }
-        }
         getSeries()
     } 
+
+    const addMovieToWatchlist = async (movie) => {
+        await addDoc(movieCollectionRef, {backdrop_path:movie?.backdrop_path, poster_path:movie?.poster_path, genre_ids:movie?.genre_ids, original_title:movie?.original_title, overview:movie?.overview, release_date:movie?.release_date, vote_average: movie?.vote_average, movie_id: movie?.id})
+    }
+
+    const addSeriesToWatchlist = async (movie) => {
+        await addDoc(seriesCollectionRef, {backdrop_path:movie?.backdrop_path, poster_path:movie?.poster_path, genre_ids:movie?.genre_ids, name:movie?.name, overview:movie?.overview, first_air_date:movie?.first_air_date, vote_average: movie?.vote_average, series_id: movie?.id})
+    }
+    
+
+    const deleting = (e, movie) =>{
+        e.preventDefault()
+        e.stopPropagation();
+        if(movie && 'release_date' in movie){
+            const movieToDelete = watchlistMovies.find((obj)=> movie.id === obj.movie_id  )
+            deleteMovie(movieToDelete?.id)
+        }else{
+            const seriesToDelete = watchlistSeries.find((obj)=> movie.id === obj.series_id  )
+            deleteSeries(seriesToDelete?.id)
+        }
+    }
+
+
+    const adding = (e, movie) =>{
+        e.preventDefault()
+        e.stopPropagation();
+        if(movie && 'release_date' in movie){
+            addMovieToWatchlist(movie)
+            getMovies()
+        }else{
+            addSeriesToWatchlist(movie)
+            getSeries()
+        }
+    }
+      
 
   return (
     <Link
@@ -78,7 +120,6 @@ function SearchCard({movie, index, setWatchlistMovies, setWatchlistSeries}) {
         onMouseLeave={handleMouseLeave}>
         <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:hidden':''}    `}/>
         <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] h-[40%] absolute top-0 opacity-0 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:opacity-100   lg:flex ':''} `}/>
-        
         <div className={`lg:mt-[50%] flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
             <div className='flex gap-2 w-[95%]' >
                 <button
@@ -91,7 +132,7 @@ function SearchCard({movie, index, setWatchlistMovies, setWatchlistSeries}) {
                     <img loading='lazy' src="/images/dark-blue-play.png" alt="" className='w-2 h-2'/>
                     <span className='font-medium text-[#16181f]' >Watch Now</span>
                 </button>
-                <button onClick={'release_date' in movie ?(e)=>deleteMovie(e,movie.id):(e)=>deleteSeries(e,movie.id)} className='text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white lg:hover:scale-105 transition-all ' >-</button>
+                <button onClick={checkExistence(movie) ?(e) => deleting(e, movie) :(e) => adding(e, movie)} className='text-[8px] h-[30px] w-[30px] flex justify-center items-center bg-[rgba(40,42,49,255)] rounded-[5px] text-white lg:hover:scale-105 transition-all ' >{checkExistence(movie)?'-':'+'}</button>
             </div>
             <p className='font-bold text-[10px] text-[#d9d9da] py-1' >{'release_date' in movie ? movie.original_title : movie.name}</p>
             <div className='w-[95%] flex flex-col gap-1' >

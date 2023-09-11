@@ -28,6 +28,7 @@ const WatchlistCard = ({movie, index, setWatchlistMovies, setWatchlistSeries}) =
     const deleteMovie = async (e, id) =>{
         e.preventDefault()
         e.stopPropagation();
+
         const movieDoc = doc(db, "watchlist_movies", id)
         await deleteDoc(movieDoc)
         const getMovies = async ()=>{

@@ -62,13 +62,13 @@ function Search({setWatchlistMovies, setWatchlistSeries}) {
     return (
         <div className='relative'>
             <Navbar/>
-            <div className='w-screen ' >
-                <div className='w-[90%] lg:w-[calc(100vw-100px)] xl:w-[calc(100vw-140px)] h-[55px] lg:h-[65px] overflow-y-hidden flex items-center gap-2 bg-[#262833] mt-5  rounded-[7px] m-6 lg:m-8 lg:ml-[100px] p-4 ' >
-                    <img loading='lazy' src="/images/search.png" alt="" className='w-4 h-4 lg:w-8 lg:h-8' />
+            <div className='flex flex-col items-center w-screen' >
+                <div className='w-[90%] lg:w-[calc(100%-100px)] xl:w-[calc(100%-200px)] h-[55px] lg:h-[65px] overflow-y-hidden flex items-center gap-2 bg-[#262833] mt-5  rounded-[7px]  p-4 my-4 ' >
+                    <img loading='lazy' src="/images/search.png" alt="" className='w-4 h-4 lg:w-6 lg:h-6' />
                     <input ref={inputRef} onChange={handleChange} type="text" placeholder='Movies, shows and more' className='w-[100%] h-[40px] rounded-[7px] bg-[#262833] outline-none text-white text-[16px] lg:text-[18px]'/>
                 </div>
-                <p className='text-white  text-[20px] lg:text-[24px] font-semibold  px-6 py-3 lg:p-3 lg:pl-[100px]' >{title}</p>
-                <div  className='w-screen lg:w-[calc(100vw-100px)] xl:w-[calc(100vw-140px)] grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-2  mb-[120px] lg:mb-0 p-6 lg:p-0 lg:m-8 lg:ml-[100px] ' >
+                <p className='text-white  text-[20px] lg:text-[24px] font-semibold  my-6 ' >{title}</p>
+                <div  className='w-screen lg:w-[calc(100%-100px)] xl:w-[calc(100%-200px)] grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-2  mb-[120px] lg:mb-0  ' >
                     {content.map((movie, index) => 
                         movie.poster_path ? (
                             <SearchCard movie={movie} index={index}  setWatchlistMovies={setWatchlistMovies} setWatchlistSeries={setWatchlistSeries} />

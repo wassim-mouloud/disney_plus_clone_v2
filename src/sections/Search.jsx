@@ -5,7 +5,7 @@ import SearchCard from '../components/SearchCard'
 import '../App.css'
 
 
-function Search({watchlistMovies, setWatchlistMovies, watchlistSeries, setWatchlistSeries, allWatchlist, setAllWatchlist}) {
+function Search({watchlistMovies, setWatchlistMovies, watchlistSeries, setWatchlistSeries, getWatchlistMovies, getWatchlistSeries, addMovieToWatchlist, addSeriesToWatchlist }) {
     
     const [popular, setPopular]= useState([]);
     const [content, setContent]= useState([]);
@@ -72,7 +72,7 @@ function Search({watchlistMovies, setWatchlistMovies, watchlistSeries, setWatchl
                 <div  className='w-screen lg:w-[calc(100%-100px)] xl:w-[calc(100%-200px)] grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-2  mb-[120px] lg:mb-0  ' >
                     {content.map((movie, index) => 
                         movie.poster_path ? (
-                            <SearchCard movie={movie} index={index}  setWatchlistMovies={setWatchlistMovies} setWatchlistSeries={setWatchlistSeries} watchlistMovies={watchlistMovies} watchlistSeries={watchlistSeries} />
+                            <SearchCard movie={movie} index={index}  watchlistMovies={watchlistMovies} watchlistSeries={watchlistSeries} getMovies={getWatchlistMovies} getSeries={getWatchlistSeries} addMovieToWatchlist={addMovieToWatchlist} addSeriesToWatchlist={addSeriesToWatchlist} />
                         ) : null
                     )}
                 </div>

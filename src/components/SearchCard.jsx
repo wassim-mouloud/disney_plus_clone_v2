@@ -3,26 +3,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { movie_genres,tv_genres } from '../utils/genres';
 import { db } from '../config/firebase'
-import {deleteDoc, addDoc, doc, getDocs, collection} from 'firebase/firestore'
+import {deleteDoc, doc} from 'firebase/firestore'
 
-function SearchCard({movie, index, watchlistMovies, watchlistSeries, getMovies, getSeries, addMovieToWatchlist, addSeriesToWatchlist}) {
-
-    const [hovered, setHovered]= useState(false)
-    const [hoveredMovieId, setHoveredMovieId] = useState(null);
-    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-    const handleMouseEnter = async (id) => {
-        setHoveredMovieId(id)
-        await sleep(500)
-        setHovered(true)
-    }
-  
-    const handleMouseLeave = () => {
-        setHoveredMovieId(null)
-        setHovered(false)
-    }
-
-
+function SearchCard({movie, index, watchlistMovies, watchlistSeries, getMovies, getSeries, addMovieToWatchlist, addSeriesToWatchlist, hovered, setHovered, hoveredMovieId, setHoveredMovieId, handleMouseEnter, handleMouseLeave}) {
 
     const checkExistence = (movie) => {
         return 'release_date' in movie

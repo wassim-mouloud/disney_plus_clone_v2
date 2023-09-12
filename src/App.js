@@ -16,9 +16,23 @@ function App() {
   const [watchlistMovies, setWatchlistMovies] = useState([])
   const [watchlistSeries, setWatchlistSeries] = useState([])
   const [allWatchlist, setAllWatchlist] = useState([])
-
   const movieCollectionRef = collection(db, 'watchlist_movies')
   const seriesCollectionRef = collection(db, 'watchlist_series')
+  const [hovered, setHovered]= useState(false)
+  const [hoveredMovieId, setHoveredMovieId] = useState(null);
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+
+  const handleMouseEnter = async (id) => {
+      setHoveredMovieId(id)
+      await sleep(500)
+      setHovered(true)
+  }
+
+  const handleMouseLeave = () => {
+      setHoveredMovieId(null)
+      setHovered(false)
+  }
 
   const getMovies = async ()=>{
     try{
@@ -74,11 +88,11 @@ const addSeriesToWatchlist = async (movie) => {
         <Route path='/' element={<Home/>} ></Route>
         <Route path='/Movies' element={<Movies/>} ></Route>
         <Route path='/Series' element={<Series/>} ></Route>
-        <Route path='/Search' element={<Search watchlistMovies={watchlistMovies} setWatchlistMovies={setWatchlistMovies} watchlistSeries={watchlistSeries} setWatchlistSeries={setWatchlistSeries} allWatchlist={allWatchlist} setAllWatchlist={setAllWatchlist} getWatchlistMovies={getMovies} getWatchlistSeries={getSeries} addMovieToWatchlist={addMovieToWatchlist} addSeriesToWatchlist={addSeriesToWatchlist} />}></Route>
+        <Route path='/Search' element={<Search watchlistMovies={watchlistMovies}  watchlistSeries={watchlistSeries}  getWatchlistMovies={getMovies} getWatchlistSeries={getSeries} addMovieToWatchlist={addMovieToWatchlist} addSeriesToWatchlist={addSeriesToWatchlist} hovered={hovered}  hoveredMovieId={hoveredMovieId}  handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />}></Route>
         <Route path='/Login' element={<Login/>}></Route>
         <Route path='MovieDetail/:id' element={<MovieDetail/>}></Route>
         <Route path='SeriesDetail/:id' element={<SeriesDetail/>}></Route>
-        <Route path='/Watchlist' element={<Watchlist watchlistMovies={watchlistMovies} setWatchlistMovies={setWatchlistMovies} watchlistSeries={watchlistSeries} setWatchlistSeries={setWatchlistSeries} allWatchlist={allWatchlist} setAllWatchlist={setAllWatchlist} />}></Route>        
+        <Route path='/Watchlist' element={<Watchlist watchlistMovies={watchlistMovies} setWatchlistMovies={setWatchlistMovies} watchlistSeries={watchlistSeries} setWatchlistSeries={setWatchlistSeries} allWatchlist={allWatchlist} setAllWatchlist={setAllWatchlist} getMovies={getMovies} getSeries={getSeries} hovered={hovered} hoveredMovieId={hoveredMovieId}  handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />}></Route>        
       </Routes>
     </div>
   );

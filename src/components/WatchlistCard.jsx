@@ -3,48 +3,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { movie_genres,tv_genres } from '../utils/genres';
 import { db } from '../config/firebase'
-import {deleteDoc, doc, getDocs, collection} from 'firebase/firestore'
+import {deleteDoc, doc} from 'firebase/firestore'
 
 
-const WatchlistCard = ({movie, index, setWatchlistMovies, setWatchlistSeries}) => {
+const WatchlistCard = ({movie, index, getMovies, getSeries,  hovered, hoveredMovieId, handleMouseEnter, handleMouseLeave}) => {
 
-    const [hovered, setHovered]= useState(false)
-    const [hoveredMovieId, setHoveredMovieId] = useState(null);
-    const movieCollectionRef = collection(db, 'watchlist_movies')
-    const seriesCollectionRef = collection(db, 'watchlist_series')
-    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-    const handleMouseEnter = async (id) => {
-        setHoveredMovieId(id)
-        await sleep(500)
-        setHovered(true)
-    }
-  
-    const handleMouseLeave = () => {
-        setHoveredMovieId(null)
-        setHovered(false)
-    }
 
     const deleteMovie = async (e, id) =>{
         e.preventDefault()
         e.stopPropagation();
-
         const movieDoc = doc(db, "watchlist_movies", id)
         await deleteDoc(movieDoc)
-        const getMovies = async ()=>{
-            try{
-                const data= await getDocs(movieCollectionRef)
-                const filteredData = data.docs.map((doc) => (
-                    {
-                        ...doc.data(),
-                        id : doc.id
-                    }
-                ) )
-                setWatchlistMovies(filteredData)
-            } catch(e){
-                console.error(e)
-            }
-        }
         getMovies()
     }
 
@@ -53,20 +22,6 @@ const WatchlistCard = ({movie, index, setWatchlistMovies, setWatchlistSeries}) =
         e.stopPropagation();
         const seriesDoc = doc(db, "watchlist_series", id)
         await deleteDoc(seriesDoc)
-        const getSeries = async ()=>{
-            try{
-                const data= await getDocs(seriesCollectionRef)
-                const filteredData = data.docs.map((doc) => (
-                    {
-                        ...doc.data(),
-                        id : doc.id
-                    }
-                ) )
-                setWatchlistSeries(filteredData)
-            } catch(e){
-                console.error(e)
-            }
-        }
         getSeries()
     } 
 

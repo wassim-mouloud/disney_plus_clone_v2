@@ -85,12 +85,12 @@ const addSeriesToWatchlist = async (movie) => {
   return (
     <div className="relative">
       <Routes>
-        <Route path='/' element={<Home/>} ></Route>
-        <Route path='/Movies' element={<Movies/>} ></Route>
+        <Route path='/' element={<Home hovered={hovered} hoveredMovieId={hoveredMovieId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />} ></Route>
+        <Route path='/Movies' element={<Movies hovered={hovered} hoveredMovieId={hoveredMovieId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />} ></Route>
         <Route path='/Series' element={<Series/>} ></Route>
         <Route path='/Search' element={<Search watchlistMovies={watchlistMovies}  watchlistSeries={watchlistSeries}  getWatchlistMovies={getMovies} getWatchlistSeries={getSeries} addMovieToWatchlist={addMovieToWatchlist} addSeriesToWatchlist={addSeriesToWatchlist} hovered={hovered}  hoveredMovieId={hoveredMovieId}  handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />}></Route>
         <Route path='/Login' element={<Login/>}></Route>
-        <Route path='MovieDetail/:id' element={<MovieDetail/>}></Route>
+        <Route path='MovieDetail/:id' element={<MovieDetail hovered={hovered} hoveredMovieId={hoveredMovieId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}/>}></Route>
         <Route path='SeriesDetail/:id' element={<SeriesDetail/>}></Route>
         <Route path='/Watchlist' element={<Watchlist watchlistMovies={watchlistMovies} setWatchlistMovies={setWatchlistMovies} watchlistSeries={watchlistSeries} setWatchlistSeries={setWatchlistSeries} allWatchlist={allWatchlist} setAllWatchlist={setAllWatchlist} getMovies={getMovies} getSeries={getSeries} hovered={hovered} hoveredMovieId={hoveredMovieId}  handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} />}></Route>        
       </Routes>

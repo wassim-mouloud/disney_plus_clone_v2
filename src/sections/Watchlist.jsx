@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import WatchlistCard from '../components/WatchlistCard'
 
-function Watchlist({watchlistMovies, watchlistSeries, allWatchlist, setAllWatchlist, getMovies, getSeries, hovered, setHovered, hoveredMovieId, setHoveredMovieId, handleMouseEnter, handleMouseLeave}) {
+function Watchlist({watchlistMovies, watchlistSeries, allWatchlist, setAllWatchlist, getMovies, getSeries, hovered, hoveredMovieId, handleMouseEnter, handleMouseLeave}) {
 
     useEffect(()=>{
         getMovies()

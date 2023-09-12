@@ -4,22 +4,18 @@ import lexrank from 'lexrank.js'
 import {Link} from 'react-router-dom'
 import '../App.css'
 import { db } from '../config/firebase'
-import {addDoc , collection , getDocs} from 'firebase/firestore'
+import {addDoc , collection } from 'firebase/firestore'
 
-function MainSlider({ trending, title }) {
+function MainSlider({hovered, hoveredMovieId, handleMouseEnter, handleMouseLeave, trending, title,  }) {
     
   const sliderRef = useRef(null)
   const [index, setIndex] = useState(1)
   const [first, setFirst] = useState([])
   const [last, setLast] = useState([])  
-  const [hoveredMovieId, setHoveredMovieId] = useState(null)
-  const [isHovered, setIsHovered]= useState(false)
   const [summaries, setSummaries]= useState([])
   const [trailers, setTrailers]= useState([])
   const watchlistMoviesCollectionRef = collection(db, 'watchlist_movies')
 
-
-  const sleep= ms=> new Promise(resolve => setTimeout(resolve, ms))
 
   useEffect(() => {
     if (trending.length > 0) {
@@ -71,19 +67,7 @@ function MainSlider({ trending, title }) {
       }
   }
 
-  const handleMouseEnter = async (id) => {
-    setIsHovered(false)
-    setHoveredMovieId(id);
-    await sleep(500)
-    setIsHovered(true)
-};
-  
 
-
-const handleMouseLeave = () => {
-    setHoveredMovieId(null)
-    setIsHovered(false)
-}
 
   useEffect(() => {
     if (trending.length > 0) {
@@ -158,13 +142,13 @@ const addToWatchlist = async (e, movie) => {
             {trending.map((movie, index) => {
                 return (
                     
-                        <Link to={`/MovieDetail/${movie.id}`} key={index} onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={()=>handleMouseLeave()} className={`group   ${isHovered && movie.id===hoveredMovieId ? 'lg:hover:scale-x-[2] lg:hover:scale-y-[1.4] xl:hover:scale-x-[1.8] xl:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white  cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] w-[110px] lg:w-[calc(100%/6-8px)] xl:w-[calc(100%/7-8px)] 2xl:w-[calc(100%/8-8px)] flex-shrink-0 rounded-[5px] ${index%6===0 && window.innerWidth<1280 ?'origin-left':''} ${index%7 === 0 && window.innerWidth<1536 ? "xl:origin-left" : ''} ${index%8 === 0 ? "2xl:origin-left" : ''} ${index%6  === 5 && index!==0 &&  window.innerWidth<1280 ? "lg:origin-right" : ''} ${index%7  === 6 && index!==0 &&  window.innerWidth<1536 ? "xl:origin-right" : ''} ${index%8  === 7 && index!==0 ? "2xl:origin-right" : ''}`} >
+                        <Link to={`/MovieDetail/${movie.id}`} key={index} onMouseEnter={() => handleMouseEnter(movie.id)} onMouseLeave={()=>handleMouseLeave()} className={`group   ${hovered && movie.id===hoveredMovieId ? 'lg:hover:scale-x-[2] lg:hover:scale-y-[1.4] xl:hover:scale-x-[1.8] xl:hover:scale-y-[1.4]': ''}    bg-[#16181f] text-white  cursor-pointer lg:hover:z-[99] transition-transform duration-500 h-[170px] lg:h-[250px] lg:min-h-[250px] w-[110px] lg:w-[calc(100%/6-8px)] xl:w-[calc(100%/7-8px)] 2xl:w-[calc(100%/8-8px)] flex-shrink-0 rounded-[5px] ${index%6===0 && window.innerWidth<1280 ?'origin-left':''} ${index%7 === 0 && window.innerWidth<1536 ? "xl:origin-left" : ''} ${index%8 === 0 ? "2xl:origin-left" : ''} ${index%6  === 5 && index!==0 &&  window.innerWidth<1280 ? "lg:origin-right" : ''} ${index%7  === 6 && index!==0 &&  window.innerWidth<1536 ? "xl:origin-right" : ''} ${index%8  === 7 && index!==0 ? "2xl:origin-right" : ''}`} >
 
-                                <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${isHovered && movie.id===hoveredMovieId?'lg:hidden  ':''}    `}/>
-                                <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] h-[40%] absolute top-0 ${isHovered && movie.id===hoveredMovieId?'lg:group-hover:opacity-100   lg:flex ':'opacity-0'} `}/>
+                                <img loading='lazy' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className={`skeleton rounded-[5px] h-full w-full ${hovered && movie.id===hoveredMovieId?'lg:hidden  ':''}    `}/>
+                                <img loading='lazy' src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt="" className={`skeleton w-full object-cover rounded-[5px] h-[40%] absolute top-0 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:opacity-100   lg:flex ':'opacity-0'} `}/>
 
 
-                                <div className={`lg:mt-[60%]  flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${isHovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
+                                <div className={`lg:mt-[60%]  flex-col items-start justify-between h-[calc(60%-16px)] hidden w-full py-2 px-2 mt-1 ${hovered && movie.id===hoveredMovieId?'lg:group-hover:flex':''}`} >
                                     <div className='flex gap-2 2xl:gap-5 w-[95%]' >
                                         <div className='h-[30px] w-[135px]' href={`https://www.youtube.com/watch?v=${trailers[index]}`} target="_blank" rel="noopener noreferrer">
                                             <button 

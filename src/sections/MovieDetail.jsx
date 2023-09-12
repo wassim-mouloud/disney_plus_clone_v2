@@ -3,7 +3,7 @@ import GenreSlider from '../components/GenreSlider'
 import Navbar from '../components/Navbar'
 import {useParams} from 'react-router-dom'
 
-function MovieDetail() {
+function MovieDetail({hovered, hoveredMovieId, handleMouseEnter, handleMouseLeave}) {
 
     const {id}= useParams();
     const [movie, setMovie]= useState({})
@@ -63,7 +63,7 @@ function MovieDetail() {
                     })}
                 </div>
         </div>
-        <GenreSlider title='More like this' url1={`https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&page=1`} url2={`https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=2`} />
+        <GenreSlider hovered={hovered} hoveredMovieId={hoveredMovieId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} title='More like this' url1={`https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&page=1`} url2={`https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=2`} />
 
     </div>
     </div>
